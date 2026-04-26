@@ -13,13 +13,17 @@ const currentPath = Astro.url.pathname;
 <header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b border-transparent">
   <nav class="max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-between h-18 md:h-22 py-3">
 
-    <!-- Logo más prominente -->
+    <!-- Logo + nombre -->
     <a href="/" class="flex items-center gap-3 shrink-0 group">
       <img
         src="/logo.png"
         alt="SOS Defensa"
-        class="h-14 md:h-16 w-auto transition-transform duration-300 group-hover:scale-105"
+        class="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105"
       />
+      <div class="leading-tight">
+        <p class="text-[#F4F4F4] font-['Playfair_Display'] font-bold text-base md:text-lg leading-none">SOS Defensa</p>
+        <p class="text-[#C3A75D] text-xs font-medium tracking-wide">Abogadas</p>
+      </div>
     </a>
 
     <!-- Desktop nav -->

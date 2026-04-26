@@ -2,87 +2,82 @@
 ---
 
 <section class="relative min-h-screen flex items-center bg-[#0E0E10] pt-20 overflow-hidden">
-  <!-- Background image con overlay -->
+
+  <!-- Fondo: fotos de las abogadas alternando cada 3s -->
   <div class="absolute inset-0 z-0">
+    <!-- Foto 1: Carol -->
     <img
-      src="https://images.unsplash.com/photo-1767972463877-b64ba4283cd0?w=1920&q=80&fit=crop&auto=format"
+      id="bg-carol"
+      src="/carolgarriga.jpg"
       alt=""
-      class="w-full h-full object-cover opacity-10"
+      class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-1000 opacity-100"
       loading="eager"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0E0E10] via-[#0E0E10]/95 to-[#0E0E10]/70"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-[#0E0E10] via-transparent to-transparent"></div>
+    <!-- Foto 2: Nancy -->
+    <img
+      id="bg-nancy"
+      src="/nancycuellar.jpg"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-1000 opacity-0"
+      loading="eager"
+    />
+    <!-- Overlay fusión: gradiente oscuro de izquierda (texto) a suave en derecha (foto) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0E0E10] via-[#0E0E10]/88 to-[#0E0E10]/40"></div>
+    <!-- Viñeta inferior -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0E0E10] via-transparent to-[#0E0E10]/30"></div>
   </div>
 
-  <!-- Glow dorado -->
-  <div class="absolute top-1/2 right-1/3 w-[500px] h-[500px] bg-[#C3A75D]/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2"></div>
+  <!-- Glow dorado sutil -->
+  <div class="absolute right-1/4 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#C3A75D]/6 rounded-full blur-3xl pointer-events-none"></div>
 
   <div class="relative z-10 w-full max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="max-w-xl">
 
-      <!-- Columna izquierda: texto -->
-      <div>
-        <!-- Badge -->
-        <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#C3A75D]/30 bg-[#C3A75D]/10 text-[#C3A75D] text-sm font-medium mb-8 opacity-0">
-          <span class="w-2 h-2 rounded-full bg-[#C3A75D] animate-pulse"></span>
-          Región de Coquimbo · 4 años de experiencia
-        </div>
-
-        <!-- H1 -->
-        <h1 class="hero-h1 font-['Playfair_Display'] font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-[#F4F4F4] mb-6 opacity-0">
-          Defiende tus derechos.<br />
-          <span class="text-gradient-gold">Sin pagar adelantado.</span>
-        </h1>
-
-        <!-- Subtítulo -->
-        <p class="hero-sub text-[#BDBDBD] text-lg leading-relaxed mb-10 max-w-lg opacity-0">
-          Abogadas especializadas en derecho laboral y familiar.
-          <strong class="text-[#F4F4F4]"> Consulta gratuita. Pagas solo si ganamos.</strong>
-        </p>
-
-        <!-- CTAs -->
-        <div class="hero-cta flex flex-col sm:flex-row gap-4 mb-8 opacity-0">
-          <a
-            href="https://wa.me/56998078460?text=Hola%2C%20quiero%20una%20consulta%20gratuita"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-3 btn-primary px-8 py-4 rounded-xl text-base font-semibold shadow-lg shadow-[#C3A75D]/10"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.526 5.837L.057 23.854l6.187-1.621A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.214-3.724.977.994-3.636-.234-.374A9.778 9.778 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/>
-            </svg>
-            Consulta gratuita por WhatsApp
-          </a>
-          <a
-            href="tel:+56998078460"
-            class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-[#232326] text-[#BDBDBD] hover:text-[#F4F4F4] hover:border-[#C3A75D]/40 transition-all duration-300 text-base font-medium"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/>
-            </svg>
-            Llamar ahora
-          </a>
-        </div>
-
-        <p class="hero-micro text-[#8C8C8C] text-sm opacity-0">
-          Sin compromiso · Respuesta en menos de 24h · Toda la Región de Coquimbo
-        </p>
+      <!-- Logo en el hero -->
+      <div class="hero-logo mb-8 opacity-0">
+        <img src="/logo.png" alt="SOS Defensa" class="h-20 md:h-24 w-auto" />
       </div>
 
-      <!-- Columna derecha: logo grande -->
-      <div class="hero-logo hidden lg:flex items-center justify-center opacity-0">
-        <div class="relative">
-          <!-- Halo dorado detrás del logo -->
-          <div class="absolute inset-0 scale-110 bg-[#C3A75D]/8 rounded-full blur-2xl"></div>
-          <img
-            src="/logo.png"
-            alt="SOS Defensa"
-            class="relative w-72 xl:w-96 h-auto drop-shadow-2xl"
-          />
-        </div>
+      <!-- H1 -->
+      <h1 class="hero-h1 font-['Playfair_Display'] font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-[#F4F4F4] mb-6 opacity-0">
+        Defiende tus derechos.<br />
+        <span class="text-gradient-gold">Sin pagar adelantado.</span>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="hero-sub text-[#BDBDBD] text-lg leading-relaxed mb-10 opacity-0">
+        Abogadas especializadas en derecho laboral y familiar.
+        <strong class="text-[#F4F4F4]"> Consulta gratuita. Pagas solo si ganamos.</strong>
+      </p>
+
+      <!-- CTAs -->
+      <div class="hero-cta flex flex-col sm:flex-row gap-4 mb-8 opacity-0">
+        <a
+          href="https://wa.me/56998078460?text=Hola%2C%20quiero%20una%20consulta%20gratuita"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-3 btn-primary px-8 py-4 rounded-xl text-base font-semibold shadow-lg shadow-[#C3A75D]/10"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.526 5.837L.057 23.854l6.187-1.621A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.214-3.724.977.994-3.636-.234-.374A9.778 9.778 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/>
+          </svg>
+          Consulta gratuita por WhatsApp
+        </a>
+        <a
+          href="tel:+56998078460"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-[#232326] text-[#BDBDBD] hover:text-[#F4F4F4] hover:border-[#C3A75D]/40 transition-all duration-300 text-base font-medium"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z"/>
+          </svg>
+          Llamar ahora
+        </a>
       </div>
 
+      <p class="hero-micro text-[#8C8C8C] text-sm opacity-0">
+        Sin compromiso · Respuesta en menos de 24h · Toda la Región de Coquimbo
+      </p>
     </div>
   </div>
 
@@ -95,13 +90,13 @@
 </section>
 
 <script>
+  // Entrada animada escalonada
   const items = [
-    { el: document.querySelector('.hero-badge'), delay: 100 },
+    { el: document.querySelector('.hero-logo'),  delay: 100 },
     { el: document.querySelector('.hero-h1'),    delay: 280 },
     { el: document.querySelector('.hero-sub'),   delay: 440 },
     { el: document.querySelector('.hero-cta'),   delay: 600 },
     { el: document.querySelector('.hero-micro'), delay: 740 },
-    { el: document.querySelector('.hero-logo'),  delay: 300 },
   ];
 
   items.forEach(({ el, delay }) => {
@@ -114,4 +109,22 @@
       elem.style.opacity = '1';
     }, delay);
   });
+
+  // Slideshow de abogadas: alterna cada 3 segundos con crossfade
+  const bgCarol = document.getElementById('bg-carol') as HTMLImageElement | null;
+  const bgNancy = document.getElementById('bg-nancy') as HTMLImageElement | null;
+
+  if (bgCarol && bgNancy) {
+    let showingCarol = true;
+    setInterval(() => {
+      if (showingCarol) {
+        bgCarol.style.opacity = '0';
+        bgNancy.style.opacity = '1';
+      } else {
+        bgCarol.style.opacity = '1';
+        bgNancy.style.opacity = '0';
+      }
+      showingCarol = !showingCarol;
+    }, 3000);
+  }
 </script>
