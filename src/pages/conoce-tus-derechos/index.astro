@@ -1,0 +1,116 @@
+---
+import Layout from '../../components/layout/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+
+const articulosFamilia = [
+  { slug: 'como-demandar-pension-alimenticia', titulo: '¿Cómo demandar por pensión alimenticia?', categoria: 'Familia' },
+  { slug: 'proceso-divorcio-paso-a-paso', titulo: 'Proceso del divorcio: el paso a paso en Chile', categoria: 'Familia' },
+  { slug: 'divorcio-mutuo-acuerdo-o-unilateral', titulo: 'Divorcio en Chile: ¿mutuo acuerdo o unilateral?', categoria: 'Familia' },
+  { slug: 'divorcio-culposo', titulo: 'Divorcio culposo: todo lo que debes saber', categoria: 'Familia' },
+  { slug: 'que-tipo-de-divorcio-me-conviene', titulo: '¿Qué tipo de divorcio me conviene?', categoria: 'Familia' },
+  { slug: 'cese-de-convivencia', titulo: 'Cese de convivencia: el primer paso para tu divorcio', categoria: 'Familia' },
+  { slug: 'compensacion-economica-divorcio', titulo: 'Compensación económica en el divorcio', categoria: 'Familia' },
+  { slug: 'violencia-intrafamiliar-como-denunciar', titulo: 'Violencia intrafamiliar: qué hacer y cómo denunciar', categoria: 'Familia' },
+];
+
+const articulosLaboral = [
+  { slug: 'que-es-el-autodespido', titulo: '¿Qué es el autodespido y cuándo aplicarlo?', categoria: 'Laboral' },
+  { slug: 'despido-injustificado-como-reclamar', titulo: 'Despido injustificado: cómo reclamar tu indemnización', categoria: 'Laboral' },
+  { slug: 'acoso-laboral-tus-derechos', titulo: 'Acoso laboral: tus derechos en Chile', categoria: 'Laboral' },
+  { slug: 'impago-de-salarios', titulo: 'Impago de salarios: qué hacer paso a paso', categoria: 'Laboral' },
+];
+---
+
+<Layout
+  title="Conoce tus Derechos — SOS Defensa | Guías Legales Chile"
+  description="Guías legales gratuitas sobre derecho laboral y familiar en Chile. Aprende sobre despido injustificado, divorcio, pensión de alimentos y más."
+>
+  <Header />
+  <main class="pt-20">
+    <!-- Hero interior -->
+    <section class="bg-[#0E0E10] py-16 border-b border-[#232326]">
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <p class="text-[#C3A75D] text-sm font-medium mb-3">Educación legal gratuita</p>
+        <h1 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-[#F4F4F4] mb-4">
+          Conoce tus Derechos
+        </h1>
+        <p class="text-[#BDBDBD] max-w-2xl text-lg">
+          Guías escritas por nuestras abogadas para que entiendas tu situación legal con claridad, sin tecnicismos.
+        </p>
+      </div>
+    </section>
+
+    <!-- Derecho de Familia -->
+    <section class="bg-[#0E0E10] py-16">
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-1 h-8 bg-gradient-to-b from-[#C3A75D] to-[#8A6F2F] rounded-full"></div>
+          <h2 class="font-['Playfair_Display'] text-2xl font-bold text-[#F4F4F4]">Derecho de Familia</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {articulosFamilia.map((art) => (
+            <a
+              href={`/conoce-tus-derechos/${art.slug}`}
+              class="group flex items-center justify-between bg-[#17171A] rounded-xl p-6 border border-[#232326] hover:border-[#C3A75D]/30 transition-colors"
+            >
+              <div>
+                <span class="text-[#C3A75D] text-xs font-medium mb-1 block">{art.categoria}</span>
+                <h3 class="text-[#F4F4F4] font-medium text-sm group-hover:text-[#E2C98A] transition-colors">
+                  {art.titulo}
+                </h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#8C8C8C] group-hover:text-[#C3A75D] transition-colors shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Derecho Laboral -->
+    <section class="section-surface py-16">
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-1 h-8 bg-gradient-to-b from-[#C3A75D] to-[#8A6F2F] rounded-full"></div>
+          <h2 class="font-['Playfair_Display'] text-2xl font-bold text-[#F4F4F4]">Derecho Laboral</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {articulosLaboral.map((art) => (
+            <a
+              href={`/conoce-tus-derechos/${art.slug}`}
+              class="group flex items-center justify-between bg-[#0E0E10] rounded-xl p-6 border border-[#232326] hover:border-[#C3A75D]/30 transition-colors"
+            >
+              <div>
+                <span class="text-[#C3A75D] text-xs font-medium mb-1 block">{art.categoria}</span>
+                <h3 class="text-[#F4F4F4] font-medium text-sm group-hover:text-[#E2C98A] transition-colors">
+                  {art.titulo}
+                </h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#8C8C8C] group-hover:text-[#C3A75D] transition-colors shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-[#0E0E10] py-16">
+      <div class="max-w-3xl mx-auto px-4 md:px-6 text-center">
+        <p class="text-[#BDBDBD] mb-6">¿Tu situación no está cubierta aquí? Cuéntanos tu caso.</p>
+        <a
+          href="https://wa.me/56998078460?text=Hola%2C%20quiero%20una%20consulta%20gratuita"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 btn-primary px-6 py-3 rounded-xl text-sm font-semibold"
+        >
+          Consulta gratuita por WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

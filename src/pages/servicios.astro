@@ -1,0 +1,131 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import CTAFinal from '../components/sections/CTAFinal.astro';
+
+const serviciosLaboral = [
+  {
+    titulo: 'Despido injustificado',
+    descripcion: '¿Te despidieron sin una causa válida? Tienes derecho a indemnización. Analizamos tu caso y te representamos sin costo inicial.',
+  },
+  {
+    titulo: 'Autodespido',
+    descripcion: 'Si tu empleador incumple sus obligaciones — no paga tu sueldo, te maltrata o modifica tu contrato sin tu consentimiento — puedes terminar el contrato y demandar.',
+  },
+  {
+    titulo: 'Acoso laboral',
+    descripcion: 'Ningún trabajador debe soportar un ambiente hostil. Te asesoramos para documentar y presentar tu denuncia ante los organismos competentes.',
+  },
+  {
+    titulo: 'Impago de salarios',
+    descripcion: 'Tienes derecho a recibir tu remuneración completa y a tiempo. Recuperamos lo que te corresponde.',
+  },
+];
+
+const serviciosFamilia = [
+  {
+    titulo: 'Divorcio',
+    descripcion: 'Tramitamos los tres tipos de divorcio en Chile: mutuo acuerdo, unilateral y culposo. Te acompañamos en cada paso del proceso.',
+  },
+  {
+    titulo: 'Pensión de alimentos',
+    descripcion: 'Tus hijos tienen derecho a recibir el apoyo económico para su alimentación, educación, salud y bienestar. Luchamos para que lo obtengan.',
+  },
+  {
+    titulo: 'Cuidado personal de los hijos',
+    descripcion: 'Velamos por el mejor interés de tus hijos en situaciones de separación, asegurando acuerdos justos de custodia.',
+  },
+  {
+    titulo: 'Violencia intrafamiliar',
+    descripcion: 'No estás solo/a. Te orientamos sobre los pasos a seguir, te acompañamos en la denuncia y te representamos ante el tribunal.',
+  },
+  {
+    titulo: 'Separación de bienes',
+    descripcion: 'Asesoría en regímenes matrimoniales, capitulaciones y acuerdos de separación patrimonial para proteger lo tuyo.',
+  },
+];
+---
+
+<Layout
+  title="Servicios — SOS Defensa | Derecho Laboral y Familiar Coquimbo"
+  description="Servicios jurídicos en derecho laboral y familiar. Despido injustificado, divorcio, pensión de alimentos y más. Consulta gratuita en Región de Coquimbo."
+>
+  <Header />
+  <main class="pt-20">
+    <!-- Hero interior -->
+    <section class="bg-[#0E0E10] py-16 border-b border-[#232326]">
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <p class="text-[#C3A75D] text-sm font-medium mb-3">Nuestros servicios</p>
+        <h1 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-[#F4F4F4] mb-4">
+          Áreas de práctica
+        </h1>
+        <p class="text-[#BDBDBD] max-w-2xl text-lg">
+          Especialización en las situaciones legales que más impactan la vida de las personas y sus familias. Consulta gratuita sin compromiso.
+        </p>
+      </div>
+    </section>
+
+    <!-- Derecho Laboral -->
+    <section id="laboral" class="bg-[#0E0E10] py-20">
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="flex items-center gap-3 mb-10">
+          <div class="w-1 h-8 bg-gradient-to-b from-[#C3A75D] to-[#8A6F2F] rounded-full"></div>
+          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-[#F4F4F4]">Derecho Laboral</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {serviciosLaboral.map((s) => (
+            <div class="bg-[#17171A] rounded-2xl p-8 border border-[#232326] hover:border-[#C3A75D]/30 transition-colors">
+              <h3 class="font-['Playfair_Display'] text-xl font-bold text-[#C3A75D] mb-3">{s.titulo}</h3>
+              <p class="text-[#BDBDBD] text-sm leading-relaxed">{s.descripcion}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Derecho de Familia -->
+    <section id="familia" class="section-surface py-20">
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="flex items-center gap-3 mb-10">
+          <div class="w-1 h-8 bg-gradient-to-b from-[#C3A75D] to-[#8A6F2F] rounded-full"></div>
+          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-[#F4F4F4]">Derecho de Familia</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {serviciosFamilia.map((s) => (
+            <div class="bg-[#0E0E10] rounded-2xl p-8 border border-[#232326] hover:border-[#C3A75D]/30 transition-colors">
+              <h3 class="font-['Playfair_Display'] text-xl font-bold text-[#C3A75D] mb-3">{s.titulo}</h3>
+              <p class="text-[#BDBDBD] text-sm leading-relaxed">{s.descripcion}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Mediación Familiar -->
+    <section id="mediacion" class="bg-[#0E0E10] py-20">
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="flex items-center gap-3 mb-10">
+          <div class="w-1 h-8 bg-gradient-to-b from-[#C3A75D] to-[#8A6F2F] rounded-full"></div>
+          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-[#F4F4F4]">Mediación Familiar</h2>
+        </div>
+        <div class="bg-[#17171A] rounded-2xl p-10 border border-[#232326] max-w-3xl">
+          <p class="text-[#BDBDBD] leading-relaxed mb-6">
+            La mediación permite resolver conflictos familiares fuera del tribunal, de forma más rápida, menos costosa y con acuerdos más duraderos porque ambas partes participan activamente en la solución.
+          </p>
+          <ul class="space-y-3">
+            {['Acuerdos cooperativos entre las partes', 'Reduce el tiempo y costo del proceso', 'Protege el bienestar de los hijos', 'Nuestras mediadoras tienen diplomados especializados'].map((item) => (
+              <li class="flex items-start gap-3 text-[#F4F4F4] text-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D] mt-1.5 shrink-0"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <CTAFinal />
+  </main>
+  <Footer />
+</Layout>

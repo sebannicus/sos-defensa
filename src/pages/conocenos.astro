@@ -1,0 +1,112 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import CTAFinal from '../components/sections/CTAFinal.astro';
+
+const equipo = [
+  {
+    nombre: 'Carol Garriga',
+    foto: '/carolgarriga.jpg',
+    cargo: 'Abogada · Mediadora Familiar',
+    formacion: [
+      'Licenciada en Derecho',
+      'Diplomado en Mediación Familiar',
+      'Especialización en Derecho de Familia',
+    ],
+    descripcion: 'Carol posee una sólida formación en derecho con enfoque especializado en casos familiares. Facilitadora de diálogos constructivos y soluciones amigables, con amplia experiencia en divorcios, pensiones alimenticias y mediación.',
+  },
+  {
+    nombre: 'Nancy Cuellar Nuñez',
+    foto: '/nancycuellar.jpg',
+    cargo: 'Abogada · Mediadora Familiar',
+    formacion: [
+      'Licenciada en Ciencias Jurídicas y Sociales',
+      'Diplomado en Mediación Familiar',
+      'Especialización en Derecho del Trabajo y Negociación Colectiva',
+      'Diplomado en Derecho de la Niñez y Adolescencia',
+    ],
+    descripcion: 'Con sólida formación académica y compromiso firme con la justicia y el bienestar familiar. Destacada por su habilidad para mediar y encontrar soluciones justas y equitativas en casos laborales y de familia.',
+  },
+];
+---
+
+<Layout
+  title="Conócenos — SOS Defensa | Equipo de Abogadas Coquimbo"
+  description="Conoce a Carol Garriga y Nancy Cuellar, abogadas especializadas en derecho laboral y familiar con 4 años de trayectoria en la Región de Coquimbo."
+>
+  <Header />
+  <main class="pt-20">
+    <!-- Hero interior -->
+    <section class="bg-[#0E0E10] py-16 border-b border-[#232326]">
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <p class="text-[#C3A75D] text-sm font-medium mb-3">Nuestro equipo</p>
+        <h1 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-[#F4F4F4] mb-4">
+          Conócenos
+        </h1>
+        <p class="text-[#BDBDBD] max-w-2xl text-lg">
+          Un equipo 100% femenino, especializado y comprometido con la justicia. Detrás de cada caso hay una persona, y lo sabemos.
+        </p>
+      </div>
+    </section>
+
+    <!-- Equipo -->
+    <section class="bg-[#0E0E10] py-20">
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {equipo.map((persona) => (
+            <div class="bg-[#17171A] rounded-2xl overflow-hidden border border-[#232326]">
+              <div class="aspect-[4/3] overflow-hidden bg-[#232326]">
+                <img
+                  src={persona.foto}
+                  alt={persona.nombre}
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="p-8">
+                <h2 class="font-['Playfair_Display'] text-2xl font-bold text-[#F4F4F4] mb-1">
+                  {persona.nombre}
+                </h2>
+                <p class="text-[#C3A75D] text-sm font-medium mb-4">{persona.cargo}</p>
+                <p class="text-[#BDBDBD] text-sm leading-relaxed mb-6">{persona.descripcion}</p>
+                <ul class="space-y-2">
+                  {persona.formacion.map((f) => (
+                    <li class="flex items-start gap-2 text-[#8C8C8C] text-xs">
+                      <span class="text-[#C3A75D] mt-0.5">✓</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="section-warm py-20">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 text-center">
+        <h2 class="font-['Playfair_Display'] text-3xl font-bold text-[#0E0E10] mb-4">Nuestro compromiso</h2>
+        <p class="text-[#232326]/70 max-w-2xl mx-auto mb-12">
+          En SOS Defensa creemos que el acceso a la justicia no debería depender de tu situación económica.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {[
+            { titulo: 'Empatía real', texto: 'Escuchamos tu situación sin juzgarte. Entendemos que detrás de cada caso hay una persona que necesita apoyo.' },
+            { titulo: 'Transparencia', texto: 'Te explicamos el proceso con claridad, sin tecnicismos. Sabrás en todo momento en qué etapa está tu caso.' },
+            { titulo: 'Resultados', texto: 'Trabajamos incansablemente para que obtengas lo que te corresponde. Solo cobramos cuando tú ganas.' },
+          ].map(({ titulo, texto }) => (
+            <div class="bg-white rounded-xl p-6 text-left shadow-sm">
+              <h3 class="font-['Playfair_Display'] text-lg font-bold text-[#0E0E10] mb-2">{titulo}</h3>
+              <p class="text-[#232326]/70 text-sm leading-relaxed">{texto}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTAFinal />
+  </main>
+  <Footer />
+</Layout>

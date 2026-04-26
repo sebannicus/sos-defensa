@@ -1,0 +1,74 @@
+---
+const servicios = [
+  {
+    area: 'Derecho Laboral',
+    descripcion: 'Defendemos a trabajadores frente a despidos injustificados, acoso laboral, impago de salarios y más.',
+    items: ['Despido injustificado', 'Autodespido', 'Acoso laboral', 'Impago de salarios'],
+    href: '/servicios#laboral',
+  },
+  {
+    area: 'Derecho de Familia',
+    descripcion: 'Acompañamos cada etapa de los procesos familiares con empatía, claridad y resultados.',
+    items: ['Divorcio', 'Pensión de alimentos', 'Cuidado personal', 'Violencia intrafamiliar'],
+    href: '/servicios#familia',
+  },
+  {
+    area: 'Mediación Familiar',
+    descripcion: 'Soluciones fuera del tribunal. Acuerdos justos que reducen conflictos y protegen a toda la familia.',
+    items: ['Acuerdos cooperativos', 'Resolución de conflictos', 'Menor costo y tiempo', 'Foco en el bienestar'],
+    href: '/servicios#mediacion',
+  },
+];
+---
+
+<section class="bg-[#0E0E10] py-20">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <div class="text-center mb-14">
+      <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-[#F4F4F4] mb-4">
+        Nuestras áreas de práctica
+      </h2>
+      <p class="text-[#BDBDBD] max-w-xl mx-auto">
+        Especialización en las situaciones legales que más afectan a las personas y familias.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      {servicios.map((servicio) => (
+        <div class="bg-[#17171A] rounded-2xl p-8 border border-[#232326] flex flex-col">
+          <h3 class="font-['Playfair_Display'] text-xl font-bold text-[#C3A75D] mb-3">
+            {servicio.area}
+          </h3>
+          <p class="text-[#BDBDBD] text-sm leading-relaxed mb-6">
+            {servicio.descripcion}
+          </p>
+          <ul class="space-y-2 mb-8 flex-1">
+            {servicio.items.map((item) => (
+              <li class="flex items-center gap-2 text-[#F4F4F4] text-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D] shrink-0"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a
+            href={servicio.href}
+            class="text-[#C3A75D] text-sm font-medium hover:text-[#E2C98A] transition-colors flex items-center gap-1"
+          >
+            Ver más
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <a
+        href="/servicios"
+        class="inline-flex items-center gap-2 border border-[#C3A75D]/40 text-[#C3A75D] hover:bg-[#C3A75D]/10 transition-colors px-6 py-3 rounded-xl text-sm font-medium"
+      >
+        Ver todos los servicios
+      </a>
+    </div>
+  </div>
+</section>

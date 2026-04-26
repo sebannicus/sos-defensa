@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg:              #0E0E10;
+    --color-bg-surface:      #17171A;
+    --color-bg-hover:        #232326;
+    --color-bg-warm:         #E8E1D6;
+
+    --color-accent:          #C3A75D;
+    --color-accent-light:    #E2C98A;
+    --color-accent-dark:     #8A6F2F;
+
+    --color-text-primary:    #F4F4F4;
+    --color-text-secondary:  #BDBDBD;
+    --color-text-muted:      #8C8C8C;
+    --color-text-dark:       #0E0E10;
+
+    --gradient-gold: linear-gradient(135deg, #8A6F2F 0%, #C3A75D 45%, #E2C98A 65%, #A3873F 100%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-accent-light);
+    box-shadow: 0 0 18px rgba(226, 201, 138, 0.25);
+  }
+
+  .section-surface {
+    background-color: var(--color-bg-surface);
+  }
+
+  .section-warm {
+    background-color: var(--color-bg-warm);
+    color: var(--color-text-dark);
+  }
+}

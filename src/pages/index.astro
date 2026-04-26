@@ -1,0 +1,25 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Hero from '../components/sections/Hero.astro';
+import Pilares from '../components/sections/Pilares.astro';
+import ServiciosResumen from '../components/sections/ServiciosResumen.astro';
+import Testimonios from '../components/sections/Testimonios.astro';
+import CTAFinal from '../components/sections/CTAFinal.astro';
+---
+
+<Layout
+  title="SOS Defensa — Abogadas en Derecho Laboral y Familiar | Región de Coquimbo"
+  description="Abogadas especializadas en derecho laboral y familiar en la Región de Coquimbo. Consulta gratuita. Pagas solo si ganamos tu caso."
+>
+  <Header />
+  <main class="pt-0">
+    <Hero />
+    <Pilares />
+    <ServiciosResumen />
+    <Testimonios />
+    <CTAFinal />
+  </main>
+  <Footer />
+</Layout>

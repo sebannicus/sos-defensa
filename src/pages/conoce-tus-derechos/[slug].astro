@@ -1,0 +1,89 @@
+---
+import Layout from '../../components/layout/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'como-demandar-pension-alimenticia' }, props: { titulo: '¿Cómo demandar por pensión alimenticia?', categoria: 'Familia' } },
+    { params: { slug: 'proceso-divorcio-paso-a-paso' }, props: { titulo: 'Proceso del divorcio: el paso a paso en Chile', categoria: 'Familia' } },
+    { params: { slug: 'divorcio-mutuo-acuerdo-o-unilateral' }, props: { titulo: 'Divorcio en Chile: ¿mutuo acuerdo o unilateral?', categoria: 'Familia' } },
+    { params: { slug: 'divorcio-culposo' }, props: { titulo: 'Divorcio culposo: todo lo que debes saber', categoria: 'Familia' } },
+    { params: { slug: 'que-tipo-de-divorcio-me-conviene' }, props: { titulo: '¿Qué tipo de divorcio me conviene?', categoria: 'Familia' } },
+    { params: { slug: 'cese-de-convivencia' }, props: { titulo: 'Cese de convivencia: el primer paso para tu divorcio', categoria: 'Familia' } },
+    { params: { slug: 'compensacion-economica-divorcio' }, props: { titulo: 'Compensación económica en el divorcio', categoria: 'Familia' } },
+    { params: { slug: 'violencia-intrafamiliar-como-denunciar' }, props: { titulo: 'Violencia intrafamiliar: qué hacer y cómo denunciar', categoria: 'Familia' } },
+    { params: { slug: 'que-es-el-autodespido' }, props: { titulo: '¿Qué es el autodespido y cuándo aplicarlo?', categoria: 'Laboral' } },
+    { params: { slug: 'despido-injustificado-como-reclamar' }, props: { titulo: 'Despido injustificado: cómo reclamar tu indemnización', categoria: 'Laboral' } },
+    { params: { slug: 'acoso-laboral-tus-derechos' }, props: { titulo: 'Acoso laboral: tus derechos en Chile', categoria: 'Laboral' } },
+    { params: { slug: 'impago-de-salarios' }, props: { titulo: 'Impago de salarios: qué hacer paso a paso', categoria: 'Laboral' } },
+  ];
+}
+
+const { titulo, categoria } = Astro.props;
+---
+
+<Layout
+  title={`${titulo} — SOS Defensa`}
+  description={`Guía gratuita: ${titulo}. Escrito por abogadas especializadas de SOS Defensa, Región de Coquimbo.`}
+>
+  <Header />
+  <main class="pt-20">
+    <section class="bg-[#0E0E10] py-16">
+      <div class="max-w-3xl mx-auto px-4 md:px-6">
+
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-sm text-[#8C8C8C] mb-8">
+          <a href="/" class="hover:text-[#C3A75D] transition-colors">Inicio</a>
+          <span>/</span>
+          <a href="/conoce-tus-derechos" class="hover:text-[#C3A75D] transition-colors">Conoce tus Derechos</a>
+          <span>/</span>
+          <span class="text-[#BDBDBD]">{categoria}</span>
+        </nav>
+
+        <!-- Header artículo -->
+        <div class="mb-12">
+          <span class="inline-block px-3 py-1 rounded-full bg-[#C3A75D]/10 text-[#C3A75D] text-xs font-medium mb-4">
+            {categoria}
+          </span>
+          <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-[#F4F4F4] mb-4">
+            {titulo}
+          </h1>
+          <p class="text-[#8C8C8C] text-sm">Por el equipo de SOS Defensa · Artículo en elaboración</p>
+        </div>
+
+        <!-- Contenido placeholder -->
+        <div class="bg-[#17171A] rounded-2xl p-8 border border-[#232326] text-center">
+          <div class="w-16 h-16 rounded-full bg-[#C3A75D]/10 flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#C3A75D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <h2 class="font-['Playfair_Display'] text-xl font-bold text-[#F4F4F4] mb-2">Artículo en elaboración</h2>
+          <p class="text-[#BDBDBD] text-sm mb-6">
+            Nuestras abogadas están preparando esta guía. Mientras tanto, puedes consultarnos directamente — la primera consulta es gratuita.
+          </p>
+          <a
+            href="https://wa.me/56998078460?text=Hola%2C%20tengo%20una%20consulta%20sobre%20{encodeURIComponent(titulo)}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 btn-primary px-6 py-3 rounded-xl text-sm font-semibold"
+          >
+            Consultar por WhatsApp
+          </a>
+        </div>
+
+        <!-- Volver -->
+        <div class="mt-8">
+          <a href="/conoce-tus-derechos" class="inline-flex items-center gap-2 text-[#8C8C8C] text-sm hover:text-[#C3A75D] transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            Volver al listado
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
