@@ -10,12 +10,16 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-40 border-b border-[#232326] bg-[#0E0E10]/95 backdrop-blur-sm">
-  <nav class="max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-between h-16 md:h-20">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b border-transparent">
+  <nav class="max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-between h-18 md:h-22 py-3">
 
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-3 shrink-0">
-      <img src="/logo.png" alt="SOS Defensa" class="h-10 w-auto" />
+    <!-- Logo más prominente -->
+    <a href="/" class="flex items-center gap-3 shrink-0 group">
+      <img
+        src="/logo.png"
+        alt="SOS Defensa"
+        class="h-14 md:h-16 w-auto transition-transform duration-300 group-hover:scale-105"
+      />
     </a>
 
     <!-- Desktop nav -->
@@ -24,13 +28,14 @@ const currentPath = Astro.url.pathname;
         <li>
           <a
             href={href}
-            class={`text-sm font-medium transition-colors ${
+            class={`text-sm font-medium transition-colors relative group ${
               currentPath === href
                 ? 'text-[#C3A75D]'
                 : 'text-[#BDBDBD] hover:text-[#F4F4F4]'
             }`}
           >
             {label}
+            <span class={`absolute -bottom-1 left-0 h-0.5 bg-[#C3A75D] transition-all duration-300 ${currentPath === href ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
           </a>
         </li>
       ))}
@@ -93,11 +98,27 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
+  const header = document.getElementById('site-header');
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
   const iconOpen = document.getElementById('icon-open');
   const iconClose = document.getElementById('icon-close');
 
+  // Scroll: cambiar fondo del header
+  window.addEventListener('scroll', () => {
+    if (!header) return;
+    if (window.scrollY > 60) {
+      header.style.backgroundColor = 'rgba(14,14,16,0.97)';
+      header.style.backdropFilter = 'blur(12px)';
+      header.style.borderBottomColor = '#232326';
+    } else {
+      header.style.backgroundColor = 'transparent';
+      header.style.backdropFilter = 'none';
+      header.style.borderBottomColor = 'transparent';
+    }
+  }, { passive: true });
+
+  // Mobile menu toggle
   toggle?.addEventListener('click', () => {
     const isOpen = !menu?.classList.contains('hidden');
     menu?.classList.toggle('hidden', isOpen);

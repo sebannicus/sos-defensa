@@ -11,23 +11,42 @@ const testimonios = [
     caso: 'Autodespido por acoso laboral',
   },
 ];
+
+const metricas = [
+  { numero: 4, sufijo: '', label: 'Años de experiencia' },
+  { numero: 2, sufijo: '', label: 'Abogadas especializadas' },
+  { numero: 100, sufijo: '%', label: 'Consulta gratuita' },
+];
 ---
 
-<section class="section-warm py-20">
+<section class="section-warm py-24 reveal-section">
   <div class="max-w-6xl mx-auto px-4 md:px-6">
-    <div class="text-center mb-14">
-      <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-[#0E0E10] mb-4">
-        Lo que dicen nuestros clientes
-      </h2>
-      <p class="text-[#232326]/70 max-w-xl mx-auto">
-        Casos reales de personas que recuperaron lo que les correspondía.
-      </p>
+
+    <!-- Imagen + texto intro -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+      <div class="reveal-left">
+        <p class="text-[#8A6F2F] text-sm font-medium mb-3">Historias reales</p>
+        <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-[#0E0E10] mb-4">
+          Lo que dicen nuestros clientes
+        </h2>
+        <p class="text-[#232326]/70 leading-relaxed">
+          Casos reales de personas que recuperaron lo que les correspondía — sin pagar un peso por adelantado.
+        </p>
+      </div>
+      <div class="reveal-right rounded-2xl overflow-hidden aspect-video shadow-lg">
+        <img
+          src="https://images.unsplash.com/photo-1698047682091-782b1e5c6536?w=800&q=80&fit=crop&auto=format"
+          alt="Reunión profesional de abogadas con cliente"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
-      {testimonios.map((t) => (
-        <div class="bg-white rounded-2xl p-8 shadow-sm">
-          <!-- Estrellas -->
+    <!-- Testimonios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {testimonios.map((t, i) => (
+        <div class={`reveal-up stagger-${i + 1} bg-white rounded-2xl p-8 shadow-sm`}>
           <div class="flex gap-1 mb-4">
             {[1,2,3,4,5].map(() => (
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#C3A75D]" viewBox="0 0 20 20" fill="currentColor">
@@ -51,16 +70,16 @@ const testimonios = [
       ))}
     </div>
 
-    <!-- Métricas -->
+    <!-- Métricas animadas -->
     <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
-      {[
-        { numero: '4', label: 'Años de experiencia' },
-        { numero: '2', label: 'Abogadas especializadas' },
-        { numero: '100%', label: 'Consulta gratuita' },
-      ].map(({ numero, label }) => (
-        <div>
-          <p class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-[#0E0E10] mb-1">
-            {numero}
+      {metricas.map(({ numero, sufijo, label }, i) => (
+        <div class={`reveal-up stagger-${i + 1}`}>
+          <p
+            class="font-['Playfair_Display'] text-5xl md:text-6xl font-bold text-[#0E0E10] mb-1 counter"
+            data-target={numero}
+            data-sufijo={sufijo}
+          >
+            0{sufijo}
           </p>
           <p class="text-[#232326]/70 text-sm">{label}</p>
         </div>
@@ -68,3 +87,33 @@ const testimonios = [
     </div>
   </div>
 </section>
+
+<script>
+  // Contador animado al entrar en viewport
+  const counters = document.querySelectorAll<HTMLElement>('.counter');
+
+  const animateCounter = (el: HTMLElement) => {
+    const target = parseInt(el.dataset.target ?? '0');
+    const sufijo = el.dataset.sufijo ?? '';
+    const duration = 1500;
+    const steps = 40;
+    const increment = target / steps;
+    let current = 0;
+    const timer = setInterval(() => {
+      current = Math.min(current + increment, target);
+      el.textContent = Math.round(current) + sufijo;
+      if (current >= target) clearInterval(timer);
+    }, duration / steps);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target as HTMLElement);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach((c) => observer.observe(c));
+</script>

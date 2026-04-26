@@ -18,12 +18,14 @@ const pilares = [
 ];
 ---
 
-<section class="section-surface py-20">
+<section class="section-surface py-20 reveal-section">
   <div class="max-w-6xl mx-auto px-4 md:px-6">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {pilares.map((pilar) => (
-        <div class="bg-[#0E0E10] rounded-2xl p-8 border border-[#232326] hover:border-[#C3A75D]/30 transition-colors group">
-          <div class="text-[#C3A75D] mb-5" set:html={pilar.icon} />
+      {pilares.map((pilar, i) => (
+        <div
+          class={`reveal-up stagger-${i + 1} bg-[#0E0E10] rounded-2xl p-8 border border-[#232326] hover:border-[#C3A75D]/40 hover:shadow-lg hover:shadow-[#C3A75D]/5 transition-all duration-300 group cursor-default`}
+        >
+          <div class="text-[#C3A75D] mb-5 transition-transform duration-300 group-hover:scale-110 w-fit" set:html={pilar.icon} />
           <h3 class="font-['Playfair_Display'] text-xl font-bold text-[#F4F4F4] mb-3">
             {pilar.titulo}
           </h3>

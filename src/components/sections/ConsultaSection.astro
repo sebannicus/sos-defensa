@@ -1,0 +1,66 @@
+---
+---
+
+<section class="bg-[#0E0E10] py-24 overflow-hidden reveal-section">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Imagen -->
+      <div class="relative reveal-left">
+        <div class="absolute -inset-4 bg-gradient-to-r from-[#C3A75D]/10 to-transparent rounded-3xl blur-xl"></div>
+        <div class="relative rounded-2xl overflow-hidden border border-[#232326] aspect-[4/3]">
+          <img
+            src="https://images.unsplash.com/photo-1758518730162-09a142505bfd?w=800&q=80&fit=crop&auto=format"
+            alt="Consulta legal profesional con abogada"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0E0E10]/60 via-transparent to-transparent"></div>
+        </div>
+        <!-- Badge flotante -->
+        <div class="absolute -bottom-4 -right-4 bg-[#17171A] border border-[#C3A75D]/30 rounded-xl px-5 py-4 shadow-xl">
+          <p class="text-[#C3A75D] font-bold text-2xl font-['Playfair_Display']">100%</p>
+          <p class="text-[#BDBDBD] text-xs">Consulta gratuita</p>
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div class="reveal-right">
+        <p class="text-[#C3A75D] text-sm font-medium mb-3">¿Por qué elegirnos?</p>
+        <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-[#F4F4F4] mb-6 leading-tight">
+          Tu defensa comienza hoy.<br />
+          <span class="text-gradient-gold">Sin poner un peso.</span>
+        </h2>
+        <p class="text-[#BDBDBD] leading-relaxed mb-8">
+          En SOS Defensa eliminamos la barrera económica de acceso a la justicia. No necesitas tener dinero para empezar tu caso — nosotras trabajamos contigo desde el primer día y solo cobramos cuando tú ganas.
+        </p>
+        <ul class="space-y-4 mb-10">
+          {[
+            'Consulta gratuita sin compromiso',
+            'Sin pago adelantado — solo pagas si ganamos',
+            'Equipo 100% femenino especializado',
+            'Atención personalizada en toda la Región de Coquimbo',
+            'Experiencia en derecho laboral y familiar',
+          ].map((item) => (
+            <li class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-[#C3A75D]/15 border border-[#C3A75D]/40 flex items-center justify-center shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-[#C3A75D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
+              <span class="text-[#BDBDBD] text-sm">{item}</span>
+            </li>
+          ))}
+        </ul>
+        <a
+          href="https://wa.me/56998078460?text=Hola%2C%20quiero%20una%20consulta%20gratuita"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 btn-primary px-6 py-3.5 rounded-xl text-sm font-semibold"
+        >
+          Hablar con una abogada ahora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
