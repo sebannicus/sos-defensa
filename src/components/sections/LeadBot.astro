@@ -1,0 +1,290 @@
+---
+// TEST: número de Sebastián. Cambiar a 56998078460 para producción.
+const WA_NUMBER = '56996425227';
+---
+
+<div class="bg-[#0E0E10] rounded-2xl overflow-hidden shadow-xl border border-[#232326]">
+
+  <!-- Header del chat -->
+  <div class="flex items-center gap-3 px-5 py-4 border-b border-[#232326] bg-[#17171A]">
+    <div class="relative shrink-0">
+      <div class="w-10 h-10 rounded-full bg-[#C3A75D]/15 border border-[#C3A75D]/30 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#C3A75D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+        </svg>
+      </div>
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-[#25D366] rounded-full border-2 border-[#17171A]"></span>
+    </div>
+    <div>
+      <p class="text-[#F4F4F4] text-sm font-semibold">Asistente SOS Defensa</p>
+      <p class="text-[#25D366] text-xs font-medium">En línea</p>
+    </div>
+    <div class="ml-auto">
+      <button id="bot-restart" class="text-[#555] hover:text-[#8C8C8C] transition-colors text-xs hidden" title="Reiniciar">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Área de mensajes -->
+  <div
+    id="bot-messages"
+    class="px-4 py-5 space-y-4 min-h-[280px] max-h-[360px] overflow-y-auto scroll-smooth"
+  ></div>
+
+  <!-- Área de opciones -->
+  <div id="bot-options" class="px-4 pb-5 pt-3 border-t border-[#1A1A1D] min-h-[72px]"></div>
+
+</div>
+
+<script define:vars={{ WA_NUMBER }}>
+  const messagesEl = document.getElementById('bot-messages');
+  const optionsEl  = document.getElementById('bot-options');
+  const restartBtn = document.getElementById('bot-restart');
+  const state = { answers: {} };
+
+  const ICON_BOT = `
+    <div class="w-7 h-7 rounded-full bg-[#C3A75D]/15 border border-[#C3A75D]/30 flex items-center justify-center shrink-0 mt-0.5">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-[#C3A75D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+      </svg>
+    </div>`;
+
+  const steps = {
+    intro: {
+      bot: '¡Hola! 👋 Soy la asistente de SOS Defensa.\n\nTe haré 5 preguntas rápidas para que las abogadas puedan preparar tu consulta.',
+      options: [{ label: '▶ Comenzar', value: null, next: 'area' }]
+    },
+    area: {
+      bot: '¿Tu consulta es sobre derecho laboral o familiar?',
+      key: 'area',
+      options: [
+        { label: '⚖️ Derecho Laboral',   value: 'Laboral',  next: 'sit_laboral' },
+        { label: '👨‍👩‍👧 Derecho Familiar', value: 'Familiar', next: 'sit_familiar' }
+      ]
+    },
+    sit_laboral: {
+      bot: '¿Qué describe mejor tu situación?',
+      key: 'situacion',
+      options: [
+        { label: 'Despido injustificado',    value: 'Despido injustificado',    next: 'tiempo' },
+        { label: 'Acoso laboral',            value: 'Acoso laboral',            next: 'tiempo' },
+        { label: 'Cotizaciones no pagadas',  value: 'Cotizaciones no pagadas',  next: 'tiempo' },
+        { label: 'Accidente del trabajo',    value: 'Accidente del trabajo',    next: 'tiempo' },
+        { label: 'Otra situación',           value: 'Otra situación laboral',   next: 'tiempo' }
+      ]
+    },
+    sit_familiar: {
+      bot: '¿Qué describe mejor tu situación?',
+      key: 'situacion',
+      options: [
+        { label: 'Divorcio',                    value: 'Divorcio',                    next: 'tiempo' },
+        { label: 'Pensión de alimentos',        value: 'Pensión de alimentos',        next: 'tiempo' },
+        { label: 'Cuidado personal de hijos',   value: 'Cuidado personal de hijos',   next: 'tiempo' },
+        { label: 'Mediación familiar',          value: 'Mediación familiar',          next: 'tiempo' },
+        { label: 'Otra situación',              value: 'Otra situación familiar',     next: 'tiempo' }
+      ]
+    },
+    tiempo: {
+      bot: '¿Cuándo ocurrió aproximadamente?',
+      key: 'tiempo',
+      options: [
+        { label: 'Hace menos de 30 días', value: 'Menos de 30 días',   next: 'docs' },
+        { label: 'Entre 1 y 2 meses',     value: 'Entre 1 y 2 meses', next: 'docs' },
+        { label: 'Entre 2 y 6 meses',     value: 'Entre 2 y 6 meses', next: 'docs' },
+        { label: 'Más de 6 meses',        value: 'Más de 6 meses',    next: 'docs' }
+      ]
+    },
+    docs: {
+      bot: '¿Tienes documentos relacionados con tu caso?\n(contrato, liquidaciones, carta de despido...)',
+      key: 'documentos',
+      options: [
+        { label: '✅ Sí, tengo',    value: 'Tiene documentos',        next: 'ciudad' },
+        { label: '📄 Tengo algunos', value: 'Tiene algunos documentos', next: 'ciudad' },
+        { label: '❌ No tengo',      value: 'No tiene documentos',      next: 'ciudad' }
+      ]
+    },
+    ciudad: {
+      bot: '¿En qué ciudad estás?',
+      key: 'ciudad',
+      options: [
+        { label: '📍 La Serena', value: 'La Serena', next: 'nombre' },
+        { label: '📍 Coquimbo',  value: 'Coquimbo',  next: 'nombre' },
+        { label: '📍 Otra',      value: 'Otra',      next: 'nombre' }
+      ]
+    },
+    nombre: {
+      bot: 'Último paso — ¿cuál es tu nombre?',
+      key: 'nombre',
+      type: 'text',
+      placeholder: 'Tu nombre...',
+      next: 'done'
+    }
+  };
+
+  function scrollBottom() {
+    setTimeout(() => { messagesEl.scrollTop = messagesEl.scrollHeight; }, 50);
+  }
+
+  function addBotMessage(text) {
+    return new Promise(resolve => {
+      // Indicador de escritura
+      const typing = document.createElement('div');
+      typing.className = 'flex items-start gap-2';
+      typing.innerHTML = `${ICON_BOT}
+        <div class="bg-[#17171A] border border-[#232326] rounded-2xl rounded-tl-sm px-4 py-3 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D]/70 animate-bounce" style="animation-delay:0ms"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D]/70 animate-bounce" style="animation-delay:150ms"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D]/70 animate-bounce" style="animation-delay:300ms"></span>
+        </div>`;
+      messagesEl.appendChild(typing);
+      scrollBottom();
+
+      setTimeout(() => {
+        typing.remove();
+        const msg = document.createElement('div');
+        msg.className = 'flex items-start gap-2 bot-msg-in';
+        msg.innerHTML = `${ICON_BOT}
+          <div class="bg-[#17171A] border border-[#232326] rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+            <p class="text-[#BDBDBD] text-sm leading-relaxed">${text.replace(/\n/g, '<br>')}</p>
+          </div>`;
+        messagesEl.appendChild(msg);
+        scrollBottom();
+        resolve();
+      }, 750);
+    });
+  }
+
+  function addUserMessage(label) {
+    const msg = document.createElement('div');
+    msg.className = 'flex justify-end user-msg-in';
+    msg.innerHTML = `
+      <div class="bg-[#C3A75D]/15 border border-[#C3A75D]/30 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[80%]">
+        <p class="text-[#F4F4F4] text-sm">${label}</p>
+      </div>`;
+    messagesEl.appendChild(msg);
+    scrollBottom();
+  }
+
+  function renderOptions(step) {
+    optionsEl.innerHTML = '';
+
+    if (step.type === 'text') {
+      const wrap = document.createElement('div');
+      wrap.className = 'flex gap-2';
+      wrap.innerHTML = `
+        <input id="bot-input" type="text" placeholder="${step.placeholder || 'Escribe aquí...'}"
+          class="flex-1 bg-[#17171A] border border-[#232326] rounded-xl px-4 py-3 text-[#F4F4F4] text-sm placeholder-[#444] outline-none focus:border-[#C3A75D]/50 transition-colors"/>
+        <button id="bot-send" class="btn-primary px-5 py-3 rounded-xl text-sm font-semibold shrink-0">Enviar</button>`;
+      optionsEl.appendChild(wrap);
+
+      const input = document.getElementById('bot-input');
+      const send  = document.getElementById('bot-send');
+      const submit = () => {
+        const val = input.value.trim();
+        if (!val) return;
+        state.answers[step.key] = val;
+        addUserMessage(val);
+        optionsEl.innerHTML = '';
+        goNext(step.next);
+      };
+      send.addEventListener('click', submit);
+      input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+      setTimeout(() => input.focus(), 80);
+
+    } else {
+      const grid = document.createElement('div');
+      grid.className = 'flex flex-wrap gap-2';
+      step.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'px-4 py-2.5 rounded-xl border border-[#2A2A2E] text-[#BDBDBD] text-sm hover:border-[#C3A75D]/50 hover:text-[#F4F4F4] hover:bg-[#C3A75D]/5 transition-all duration-200 font-medium';
+        btn.textContent = opt.label;
+        btn.addEventListener('click', () => {
+          if (step.key && opt.value) state.answers[step.key] = opt.value;
+          if (opt.value) addUserMessage(opt.label);
+          optionsEl.innerHTML = '';
+          goNext(opt.next || step.next);
+        });
+        grid.appendChild(btn);
+      });
+      optionsEl.appendChild(grid);
+    }
+  }
+
+  async function goNext(nextId) {
+    if (nextId === 'done') { finalize(); return; }
+    const step = steps[nextId];
+    if (!step) return;
+    await addBotMessage(step.bot);
+    renderOptions(step);
+  }
+
+  async function finalize() {
+    restartBtn.classList.remove('hidden');
+    const a = state.answers;
+    const nombre = a.nombre || 'Sin nombre';
+
+    await addBotMessage(`¡Gracias, ${nombre}! 🙌\n\nToda tu información está lista. Toca el botón para enviarla a nuestras abogadas por WhatsApp.`);
+
+    const texto =
+`Hola SOS Defensa 👋 vengo del formulario de la web.
+
+📋 *Resumen de mi consulta:*
+• Nombre: ${nombre}
+• Área: Derecho ${a.area || '-'}
+• Situación: ${a.situacion || '-'}
+• ¿Cuándo ocurrió?: ${a.tiempo || '-'}
+• Documentos: ${a.documentos || '-'}
+• Ciudad: ${a.ciudad || '-'}
+
+Quisiera agendar una consulta gratuita.`;
+
+    const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`;
+
+    setTimeout(() => {
+      const cta = document.createElement('div');
+      cta.className = 'flex justify-center';
+      cta.innerHTML = `
+        <a href="${waUrl}" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 btn-primary px-6 py-3.5 rounded-xl text-sm font-semibold shadow-lg shadow-[#C3A75D]/10 w-full justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.526 5.837L.057 23.854l6.187-1.621A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.214-3.724.977.994-3.636-.234-.374A9.778 9.778 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/>
+          </svg>
+          Enviar consulta por WhatsApp
+        </a>`;
+      optionsEl.innerHTML = '';
+      optionsEl.appendChild(cta);
+    }, 900);
+  }
+
+  restartBtn?.addEventListener('click', () => {
+    state.answers = {};
+    messagesEl.innerHTML = '';
+    optionsEl.innerHTML = '';
+    restartBtn.classList.add('hidden');
+    boot();
+  });
+
+  async function boot() {
+    const first = steps['intro'];
+    await addBotMessage(first.bot);
+    renderOptions(first);
+  }
+
+  boot();
+</script>
+
+<style>
+  .bot-msg-in  { animation: slideIn 0.3s ease; }
+  .user-msg-in { animation: slideIn 0.25s ease; }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  #bot-messages { scrollbar-width: thin; scrollbar-color: #2A2A2E transparent; }
+  #bot-messages::-webkit-scrollbar { width: 4px; }
+  #bot-messages::-webkit-scrollbar-thumb { background: #2A2A2E; border-radius: 2px; }
+</style>
