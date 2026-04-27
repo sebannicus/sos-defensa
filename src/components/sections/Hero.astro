@@ -3,39 +3,53 @@
 
 <section class="relative min-h-screen flex items-center bg-[#0E0E10] pt-20 overflow-hidden">
 
-  <!-- Fondo: fotos de las abogadas alternando cada 3s -->
+  <!-- ─── FONDOS ─── -->
   <div class="absolute inset-0 z-0">
-    <!-- Foto 1: Carol -->
     <img
       id="bg-carol"
-      src="/abogada1.png"
+      src="/carolgarriga.jpg"
       alt=""
+      aria-hidden="true"
       class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-1000 opacity-100"
       loading="eager"
     />
-    <!-- Foto 2: Carol (segunda toma) -->
     <img
       id="bg-nancy"
-      src="/abogada1.png"
+      src="/nancycuellar1.jpg"
       alt=""
-      class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 opacity-0"
+      aria-hidden="true"
+      class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-1000 opacity-0"
       loading="eager"
     />
-    <!-- Overlay fusión: gradiente oscuro de izquierda (texto) a suave en derecha (foto) -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0E0E10] via-[#0E0E10]/88 to-[#0E0E10]/40"></div>
+    <!-- Overlay oscuro izq → suave der -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0E0E10] via-[#0E0E10]/88 to-[#0E0E10]/35"></div>
     <!-- Viñeta inferior -->
-    <div class="absolute inset-0 bg-gradient-to-t from-[#0E0E10] via-transparent to-[#0E0E10]/30"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0E0E10] to-transparent"></div>
+    <!-- Viñeta superior -->
+    <div class="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#0E0E10]/70 to-transparent"></div>
   </div>
 
-  <!-- Glow dorado sutil -->
-  <div class="absolute right-1/4 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#C3A75D]/6 rounded-full blur-3xl pointer-events-none"></div>
+  <!-- ─── DECORATIVOS ─── -->
+  <!-- Orbe dorado grande derecha -->
+  <div class="absolute right-[8%] top-1/2 -translate-y-1/2 w-[580px] h-[580px] bg-[#C3A75D]/7 rounded-full blur-[140px] pointer-events-none"></div>
+  <!-- Orbe dorado pequeño izquierda-abajo -->
+  <div class="absolute left-[-8%] bottom-[10%] w-[300px] h-[300px] bg-[#C3A75D]/5 rounded-full blur-[90px] pointer-events-none"></div>
+  <!-- Línea vertical dorada decorativa -->
+  <div class="absolute top-[18%] right-[37%] w-px h-[38%] bg-gradient-to-b from-transparent via-[#C3A75D]/20 to-transparent hidden lg:block"></div>
+  <!-- Dot grid overlay sutil -->
+  <div
+    class="absolute inset-0 opacity-[0.022] pointer-events-none"
+    style="background-image: radial-gradient(circle, #C3A75D 1px, transparent 1px); background-size: 32px 32px;"
+  ></div>
 
+  <!-- ─── CONTENIDO ─── -->
   <div class="relative z-10 w-full max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
     <div class="max-w-xl">
 
-      <!-- Logo en el hero -->
-      <div class="hero-logo mb-8 opacity-0">
-        <img src="/logo.png" alt="SOS Defensa" class="h-20 md:h-24 w-auto" />
+      <!-- Badge legal -->
+      <div class="hero-badge inline-flex items-center gap-2 bg-[#C3A75D]/10 border border-[#C3A75D]/25 rounded-full px-4 py-1.5 mb-8 opacity-0">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D] animate-pulse"></span>
+        <span class="text-[#C3A75D] text-xs font-medium tracking-wider uppercase">Abogadas en Coquimbo</span>
       </div>
 
       <!-- H1 -->
@@ -45,13 +59,13 @@
       </h1>
 
       <!-- Subtítulo -->
-      <p class="hero-sub text-[#BDBDBD] text-lg leading-relaxed mb-10 opacity-0">
-        Abogadas especializadas en derecho laboral y familiar.
-        <strong class="text-[#F4F4F4]"> Consulta gratuita. Pagas solo si ganamos.</strong>
+      <p class="hero-sub text-[#BDBDBD] text-lg leading-relaxed mb-8 opacity-0">
+        Abogadas especializadas en derecho laboral y familiar.<br/>
+        <strong class="text-[#F4F4F4]">Consulta gratuita. Pagas solo si ganamos.</strong>
       </p>
 
       <!-- CTAs -->
-      <div class="hero-cta flex flex-col sm:flex-row gap-4 mb-8 opacity-0">
+      <div class="hero-cta flex flex-col sm:flex-row gap-4 mb-10 opacity-0">
         <a
           href="https://wa.me/56998078460?text=Hola%2C%20quiero%20una%20consulta%20gratuita"
           target="_blank"
@@ -75,9 +89,24 @@
         </a>
       </div>
 
-      <p class="hero-micro text-[#8C8C8C] text-sm opacity-0">
-        Sin compromiso · Respuesta en menos de 24h · Toda la Región de Coquimbo
-      </p>
+      <!-- Stats rápidos -->
+      <div class="hero-stats flex items-center gap-5 opacity-0">
+        <div>
+          <p class="text-[#C3A75D] text-lg font-bold font-['Playfair_Display']">4 años</p>
+          <p class="text-[#8C8C8C] text-xs">de trayectoria</p>
+        </div>
+        <div class="w-px h-8 bg-[#232326]"></div>
+        <div>
+          <p class="text-[#C3A75D] text-lg font-bold font-['Playfair_Display']">100%</p>
+          <p class="text-[#8C8C8C] text-xs">consulta gratuita</p>
+        </div>
+        <div class="w-px h-8 bg-[#232326]"></div>
+        <div>
+          <p class="text-[#C3A75D] text-lg font-bold font-['Playfair_Display']">Sin riesgo</p>
+          <p class="text-[#8C8C8C] text-xs">pagas solo si ganas</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -90,13 +119,12 @@
 </section>
 
 <script>
-  // Entrada animada escalonada
   const items = [
-    { el: document.querySelector('.hero-logo'),  delay: 100 },
-    { el: document.querySelector('.hero-h1'),    delay: 280 },
-    { el: document.querySelector('.hero-sub'),   delay: 440 },
-    { el: document.querySelector('.hero-cta'),   delay: 600 },
-    { el: document.querySelector('.hero-micro'), delay: 740 },
+    { el: document.querySelector('.hero-badge'),  delay: 80 },
+    { el: document.querySelector('.hero-h1'),     delay: 240 },
+    { el: document.querySelector('.hero-sub'),    delay: 400 },
+    { el: document.querySelector('.hero-cta'),    delay: 560 },
+    { el: document.querySelector('.hero-stats'),  delay: 720 },
   ];
 
   items.forEach(({ el, delay }) => {
@@ -110,7 +138,6 @@
     }, delay);
   });
 
-  // Slideshow de abogadas: alterna cada 3 segundos con crossfade
   const bgCarol = document.getElementById('bg-carol') as HTMLImageElement | null;
   const bgNancy = document.getElementById('bg-nancy') as HTMLImageElement | null;
 
@@ -125,6 +152,6 @@
         bgNancy.style.opacity = '0';
       }
       showingCarol = !showingCarol;
-    }, 3000);
+    }, 4000);
   }
 </script>

@@ -1,0 +1,118 @@
+---
+const faqs = [
+  {
+    q: '¿Cuánto cuesta contratar a SOS Defensa Abogadas?',
+    a: 'La primera consulta es completamente gratuita y sin compromiso. Trabajamos con un sistema de honorarios por éxito: solo cobras si ganamos tu caso o logras una resolución favorable. No necesitas pagar nada para comenzar tu proceso legal.',
+  },
+  {
+    q: '¿En qué tipos de casos me pueden ayudar?',
+    a: 'Somos especialistas en derecho laboral —despidos injustificados, acoso laboral, incumplimiento de contrato, accidentes del trabajo, cotizaciones no pagadas— y derecho de familia —divorcios, pensión de alimentos, cuidado personal de hijos, bienes familiares. Atendemos a toda la Región de Coquimbo.',
+  },
+  {
+    q: '¿Cuánto tiempo dura un juicio laboral en Chile?',
+    a: 'Un juicio laboral en Chile puede durar entre 6 meses y 2 años según la complejidad del caso. Sin embargo, muchos conflictos se resuelven mediante mediación o conciliación en plazos mucho más cortos. Te asesoramos sobre la estrategia más adecuada para tu situación específica.',
+  },
+  {
+    q: '¿Qué documentos necesito para la primera consulta?',
+    a: 'Idealmente: contrato de trabajo, liquidaciones de sueldo recientes, carta de despido (si aplica) y cualquier comunicación relevante con tu empleador (correos, mensajes, cartas). No te preocupes si no los tienes todos — podemos comenzar con lo que tengas disponible.',
+  },
+  {
+    q: '¿Qué pasa si pierdo el caso?',
+    a: 'Nuestro modelo de honorarios por éxito significa que si no obtienes un resultado favorable, no pagas honorarios de abogada. Solo cobramos cuando tú ganas una indemnización o resolución positiva. Esto nos alinea completamente con tu objetivo.',
+  },
+  {
+    q: '¿Atienden fuera de La Serena y Coquimbo?',
+    a: 'Sí. Atendemos clientes en toda la Región de Coquimbo, incluyendo Ovalle, Illapel, Los Vilos, Andacollo y otras comunas. También ofrecemos consultas por videollamada para mayor comodidad.',
+  },
+  {
+    q: '¿Tengo plazo límite para reclamar un despido injustificado?',
+    a: 'Sí. En Chile tienes 60 días hábiles desde la fecha del despido para presentar una demanda ante el Juzgado de Letras del Trabajo. Si ese plazo se interrumpe con una mediación ante la Inspección del Trabajo, el contador se pausa. No esperes — contáctanos a la brevedad.',
+  },
+  {
+    q: '¿Puedo reclamar si no tengo contrato de trabajo escrito?',
+    a: 'Sí. La ley chilena presume la existencia de un contrato de trabajo cuando hay una relación de dependencia y subordinación, aunque no exista documento firmado. Podemos ayudarte a demostrar la relación laboral y reclamar tus derechos.',
+  },
+];
+
+const schemaFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a,
+    },
+  })),
+};
+---
+
+<section class="bg-[#17171A] py-24 overflow-hidden reveal-section" id="preguntas-frecuentes">
+
+  <!-- JSON-LD FAQPage para Google -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaFAQ)} />
+
+  <!-- Decorativo superior -->
+  <div class="absolute left-[-5%] top-[30%] w-[350px] h-[350px] bg-[#C3A75D]/4 rounded-full blur-[100px] pointer-events-none"></div>
+
+  <div class="max-w-4xl mx-auto px-4 md:px-6 relative">
+
+    <!-- Encabezado -->
+    <div class="text-center mb-14 reveal-up stagger-1">
+      <p class="text-[#C3A75D] text-sm font-medium mb-3 tracking-wider uppercase">Preguntas frecuentes</p>
+      <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-[#F4F4F4] mb-4">
+        Resolvemos tus dudas
+      </h2>
+      <p class="text-[#BDBDBD] max-w-lg mx-auto text-sm leading-relaxed">
+        Todo lo que necesitas saber antes de contactarnos. Si tienes más preguntas, escríbenos — respondemos en menos de 24 horas.
+      </p>
+    </div>
+
+    <!-- Lista de FAQs -->
+    <div class="space-y-3">
+      {faqs.map((faq) => (
+        <details class="reveal-up group bg-[#0E0E10] border border-[#232326] rounded-2xl overflow-hidden hover:border-[#C3A75D]/30 transition-colors duration-300">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer" style="list-style: none;">
+            <span class="font-['Playfair_Display'] text-[#F4F4F4] font-semibold text-base pr-2">{faq.q}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="faq-arrow w-5 h-5 text-[#C3A75D] shrink-0 transition-transform duration-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 border-t border-[#232326]">
+            <p class="text-[#BDBDBD] leading-relaxed text-sm pt-4">{faq.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- CTA al pie -->
+    <div class="text-center mt-12 reveal-up">
+      <p class="text-[#8C8C8C] text-sm mb-5">¿Tienes otra pregunta que no está aquí?</p>
+      <a
+        href="https://wa.me/56998078460?text=Hola%2C%20tengo%20una%20consulta"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 btn-primary px-6 py-3.5 rounded-xl text-sm font-semibold"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.526 5.837L.057 23.854l6.187-1.621A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.214-3.724.977.994-3.636-.234-.374A9.778 9.778 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/>
+        </svg>
+        Pregúntanos por WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .faq-arrow { transform: rotate(180deg); }
+</style>
