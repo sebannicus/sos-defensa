@@ -29,53 +29,56 @@ const { titulo, categoria } = Astro.props;
 >
   <Header />
   <main class="pt-20">
-    <section class="bg-[#0E0E10] py-16">
+    <section class="bg-(--color-bg) py-16">
       <div class="max-w-3xl mx-auto px-4 md:px-6">
 
         <!-- Breadcrumb -->
-        <nav class="flex items-center gap-2 text-sm text-[#8C8C8C] mb-8">
-          <a href="/" class="hover:text-[#C3A75D] transition-colors">Inicio</a>
+        <nav class="flex items-center gap-2 text-sm text-(--color-text-muted) mb-8">
+          <a href="/" class="hover:text-(--color-accent) transition-colors">Inicio</a>
           <span>/</span>
-          <a href="/conoce-tus-derechos" class="hover:text-[#C3A75D] transition-colors">Conoce tus Derechos</a>
+          <a href="/conoce-tus-derechos" class="hover:text-(--color-accent) transition-colors">Conoce tus Derechos</a>
           <span>/</span>
-          <span class="text-[#BDBDBD]">{categoria}</span>
+          <span class="text-(--color-text-secondary)">{categoria}</span>
         </nav>
 
         <!-- Header artículo -->
-        <div class="mb-12">
-          <span class="inline-block px-3 py-1 rounded-full bg-[#C3A75D]/10 text-[#C3A75D] text-xs font-medium mb-4">
+        <div class="mb-12 reveal-up">
+          <span class="inline-block px-3 py-1 rounded-full bg-[#C3A75D]/10 text-(--color-accent) text-xs font-semibold tracking-wide mb-4">
             {categoria}
           </span>
-          <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-[#F4F4F4] mb-4">
+          <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-(--color-text-primary) mb-4">
             {titulo}
           </h1>
-          <p class="text-[#8C8C8C] text-sm">Por el equipo de SOS Defensa · Artículo en elaboración</p>
+          <p class="text-(--color-text-muted) text-sm">Por el equipo de SOS Defensa · Artículo en elaboración</p>
         </div>
 
-        <!-- Contenido placeholder -->
-        <div class="bg-[#17171A] rounded-2xl p-8 border border-[#232326] text-center">
-          <div class="w-16 h-16 rounded-full bg-[#C3A75D]/10 flex items-center justify-center mx-auto mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#C3A75D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
+        <!-- Placeholder card -->
+        <div class="reveal-up stagger-2 bg-(--color-bg-surface) rounded-2xl overflow-hidden border border-(--color-bg-hover) card-lift">
+          <div class="h-0.75 bg-linear-to-r from-[#8A6F2F] via-[#C3A75D] to-[#E2C98A]"></div>
+          <div class="p-10 text-center">
+            <div class="w-16 h-16 rounded-2xl bg-[#C3A75D]/10 border border-[#C3A75D]/20 flex items-center justify-center mx-auto mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-(--color-accent)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <h2 class="font-['Playfair_Display'] text-xl font-bold text-(--color-text-primary) mb-3">Artículo en elaboración</h2>
+            <p class="text-(--color-text-secondary) text-sm mb-7 max-w-sm mx-auto leading-relaxed">
+              Nuestras abogadas están preparando esta guía. Mientras tanto, puedes consultarnos directamente.
+            </p>
+            <a
+              href={`https://wa.me/56998078460?text=Hola%2C%20tengo%20una%20consulta%20sobre%20${encodeURIComponent(titulo)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 btn-primary px-6 py-3.5 rounded-xl text-sm font-semibold"
+            >
+              Consultar por WhatsApp
+            </a>
           </div>
-          <h2 class="font-['Playfair_Display'] text-xl font-bold text-[#F4F4F4] mb-2">Artículo en elaboración</h2>
-          <p class="text-[#BDBDBD] text-sm mb-6">
-            Nuestras abogadas están preparando esta guía. Mientras tanto, puedes consultarnos directamente — la primera consulta es gratuita.
-          </p>
-          <a
-            href="https://wa.me/56998078460?text=Hola%2C%20tengo%20una%20consulta%20sobre%20{encodeURIComponent(titulo)}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 btn-primary px-6 py-3 rounded-xl text-sm font-semibold"
-          >
-            Consultar por WhatsApp
-          </a>
         </div>
 
         <!-- Volver -->
-        <div class="mt-8">
-          <a href="/conoce-tus-derechos" class="inline-flex items-center gap-2 text-[#8C8C8C] text-sm hover:text-[#C3A75D] transition-colors">
+        <div class="mt-8 reveal-up stagger-3">
+          <a href="/conoce-tus-derechos" class="inline-flex items-center gap-2 text-(--color-text-muted) text-sm hover:text-(--color-accent) transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>

@@ -1,11 +1,14 @@
 @import "tailwindcss";
 
 @layer base {
+  /* ─── SILK DARK THEME ─── */
   :root {
-    --color-bg:              #0E0E10;
-    --color-bg-surface:      #17171A;
-    --color-bg-hover:        #232326;
-    --color-bg-warm:         #E8E1D6;
+    /* Semi-transparentes para que la seda se filtre */
+    --color-bg:              rgba(14, 14, 16, 0.80);
+    --color-bg-surface:      rgba(23, 23, 26, 0.90);
+    --color-bg-hover:        #2E2E32;
+    /* Cálida y casi opaca → isla clara en Testimonios */
+    --color-bg-warm:         rgba(232, 225, 214, 0.97);
 
     --color-accent:          #C3A75D;
     --color-accent-light:    #E2C98A;
@@ -17,14 +20,23 @@
     --color-text-dark:       #0E0E10;
 
     --gradient-gold: linear-gradient(135deg, #8A6F2F 0%, #C3A75D 45%, #E2C98A 65%, #A3873F 100%);
+
+    --hero-overlay: linear-gradient(to right,
+      rgba(14,14,16,0.90) 0%,
+      rgba(14,14,16,0.60) 55%,
+      rgba(14,14,16,0.15) 100%);
+    --hero-vignette-bottom: linear-gradient(to top, rgba(14,14,16,0.80) 0%, transparent 100%);
+    --hero-vignette-top: linear-gradient(to bottom, rgba(14,14,16,0.60) 0%, transparent 100%);
+
+    --header-scroll-bg: rgba(14, 14, 16, 0.95);
   }
 
-  html {
+  html, body {
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: var(--color-bg);
+    background-color: transparent; /* la seda del canvas se ve directamente */
     color: var(--color-text-primary);
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -39,17 +51,17 @@
 .reveal-up {
   opacity: 0;
   transform: translateY(32px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  transition: opacity 0.65s ease, transform 0.65s ease !important;
 }
 .reveal-left {
   opacity: 0;
   transform: translateX(-32px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  transition: opacity 0.65s ease, transform 0.65s ease !important;
 }
 .reveal-right {
   opacity: 0;
   transform: translateX(32px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  transition: opacity 0.65s ease, transform 0.65s ease !important;
 }
 .revealed {
   opacity: 1 !important;
@@ -75,17 +87,17 @@
 details[open] .faq-arrow { transform: rotate(180deg); }
 
 /* Reveal section — activa reveal en hijos cuando el padre es visible */
-.reveal-section .reveal-up,
-.reveal-section .reveal-left,
-.reveal-section .reveal-right {
-  /* hijos se revelan cuando la sección tiene .revealed */
-}
 .revealed .reveal-up,
 .revealed .reveal-left,
 .revealed .reveal-right {
   opacity: 1;
   transform: translate(0);
 }
+
+/* Hero overlay classes (reemplaza los gradientes hardcoded) */
+.hero-overlay    { background: var(--hero-overlay); }
+.hero-vignette-b { background: var(--hero-vignette-bottom); }
+.hero-vignette-t { background: var(--hero-vignette-top); }
 
 @layer utilities {
   .text-gradient-gold {
@@ -104,8 +116,18 @@ details[open] .faq-arrow { transform: rotate(180deg); }
 
   .btn-primary:hover {
     background-color: var(--color-accent-light);
-    box-shadow: 0 0 18px rgba(226, 201, 138, 0.25);
+    box-shadow: 0 0 18px rgba(195, 167, 93, 0.3);
   }
+
+  /* Clases semánticas para fondos/textos — usarlas en componentes */
+  .bg-theme         { background-color: var(--color-bg); }
+  .bg-theme-surface { background-color: var(--color-bg-surface); }
+  .bg-theme-hover   { background-color: var(--color-bg-hover); }
+  .border-theme     { border-color: var(--color-bg-hover); }
+  .text-theme-1     { color: var(--color-text-primary); }
+  .text-theme-2     { color: var(--color-text-secondary); }
+  .text-theme-3     { color: var(--color-text-muted); }
+  .text-accent      { color: var(--color-accent); }
 
   .section-surface {
     background-color: var(--color-bg-surface);
@@ -115,4 +137,71 @@ details[open] .faq-arrow { transform: rotate(180deg); }
     background-color: var(--color-bg-warm);
     color: var(--color-text-dark);
   }
+}
+
+/* ─── Stagger extras ─── */
+.stagger-4 { transition-delay: 360ms; }
+.stagger-5 { transition-delay: 480ms; }
+
+/* ─── Card lift hover ─── */
+.card-lift {
+  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.32s ease,
+              border-color 0.32s ease !important;
+}
+.card-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 44px rgba(195, 167, 93, 0.12);
+  border-color: rgba(195, 167, 93, 0.38) !important;
+}
+
+/* ─── Dot grid pattern ─── */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(195, 167, 93, 0.35) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ─── Btn shimmer ─── */
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(300%) skewX(-20deg); }
+}
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+  transition: none !important;
+  pointer-events: none;
+}
+.btn-primary:hover::after {
+  animation: shimmer-sweep 0.55s ease forwards;
+}
+
+/* ─── FAQ open state ─── */
+details[open] {
+  border-color: rgba(195, 167, 93, 0.42) !important;
+  background-color: rgba(195, 167, 93, 0.025) !important;
+}
+details[open] .faq-question-text {
+  color: var(--color-accent);
+}
+.faq-body {
+  animation: faq-open 0.28s ease;
+}
+@keyframes faq-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
 }

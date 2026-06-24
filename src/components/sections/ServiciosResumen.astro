@@ -1,19 +1,25 @@
 ---
 const servicios = [
   {
+    num: '01',
     area: 'Derecho Laboral',
-    descripcion: 'Defendemos a trabajadores frente a despidos injustificados, acoso laboral, impago de salarios y más.',
-    items: ['Despido injustificado', 'Autodespido', 'Acoso laboral', 'Impago de salarios'],
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`,
+    descripcion: 'Defendemos a trabajadores frente a despidos injustificados, acoso laboral, impago de remuneraciones y más.',
+    items: ['Despido injustificado', 'Autodespido', 'Acoso laboral', 'Impago de remuneraciones'],
     href: '/servicios#laboral',
   },
   {
+    num: '02',
     area: 'Derecho de Familia',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
     descripcion: 'Acompañamos cada etapa de los procesos familiares con empatía, claridad y resultados.',
     items: ['Divorcio', 'Pensión de alimentos', 'Cuidado personal', 'Violencia intrafamiliar'],
     href: '/servicios#familia',
   },
   {
+    num: '03',
     area: 'Mediación Familiar',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>`,
     descripcion: 'Soluciones fuera del tribunal. Acuerdos justos que reducen conflictos y protegen a toda la familia.',
     items: ['Acuerdos cooperativos', 'Resolución de conflictos', 'Menor costo y tiempo', 'Foco en el bienestar'],
     href: '/servicios#mediacion',
@@ -21,53 +27,70 @@ const servicios = [
 ];
 ---
 
-<section class="bg-[#0E0E10] py-20">
+<section class="bg-(--color-bg) py-14 md:py-20">
   <div class="max-w-6xl mx-auto px-4 md:px-6">
-    <div class="text-center mb-14">
-      <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-[#F4F4F4] mb-4">
+
+    <div class="text-center mb-14 reveal-up">
+      <p class="text-(--color-accent) text-xs font-semibold tracking-[0.2em] uppercase mb-3">Lo que hacemos</p>
+      <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-(--color-text-primary) mb-4">
         Nuestras áreas de práctica
       </h2>
-      <p class="text-[#BDBDBD] max-w-xl mx-auto">
+      <p class="text-(--color-text-secondary) max-w-xl mx-auto text-sm leading-relaxed">
         Especialización en las situaciones legales que más afectan a las personas y familias.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-      {servicios.map((servicio) => (
-        <div class="bg-[#17171A] rounded-2xl p-8 border border-[#232326] flex flex-col">
-          <h3 class="font-['Playfair_Display'] text-xl font-bold text-[#C3A75D] mb-3">
-            {servicio.area}
-          </h3>
-          <p class="text-[#BDBDBD] text-sm leading-relaxed mb-6">
-            {servicio.descripcion}
-          </p>
-          <ul class="space-y-2 mb-8 flex-1">
-            {servicio.items.map((item) => (
-              <li class="flex items-center gap-2 text-[#F4F4F4] text-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D] shrink-0"></span>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <a
-            href={servicio.href}
-            class="text-[#C3A75D] text-sm font-medium hover:text-[#E2C98A] transition-colors flex items-center gap-1"
-          >
-            Ver más
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </a>
+      {servicios.map((servicio, i) => (
+        <div class={`reveal-up stagger-${i + 1} relative bg-(--color-bg-surface) rounded-2xl border border-(--color-bg-hover) card-lift group overflow-hidden flex flex-col`}>
+          <!-- Gold top line -->
+          <div class="h-0.75 bg-linear-to-r from-[#8A6F2F] via-[#C3A75D] to-[#E2C98A]"></div>
+          <div class="p-8 flex flex-col flex-1">
+            <!-- Icon + Number -->
+            <div class="flex items-start justify-between mb-5">
+              <div class="w-12 h-12 rounded-xl bg-[#C3A75D]/10 border border-[#C3A75D]/20 flex items-center justify-center text-(--color-accent) group-hover:bg-[#C3A75D]/20 group-hover:border-[#C3A75D]/40 group-hover:scale-110 transition-all duration-300">
+                <span set:html={servicio.icon} />
+              </div>
+              <span class="font-['Playfair_Display'] text-5xl font-bold text-(--color-accent) opacity-10 leading-none select-none">{servicio.num}</span>
+            </div>
+
+            <h3 class="font-['Playfair_Display'] text-xl font-bold text-(--color-accent) mb-3">
+              {servicio.area}
+            </h3>
+            <p class="text-(--color-text-secondary) text-sm leading-relaxed mb-5">
+              {servicio.descripcion}
+            </p>
+            <ul class="space-y-2.5 mb-8 flex-1">
+              {servicio.items.map((item) => (
+                <li class="flex items-center gap-2.5 text-(--color-text-primary) text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D] shrink-0"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={servicio.href}
+              class="inline-flex items-center gap-1.5 text-(--color-accent) text-sm font-semibold group/link mt-auto"
+            >
+              Ver más
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover/link:translate-x-1.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
         </div>
       ))}
     </div>
 
-    <div class="text-center">
+    <div class="text-center reveal-up">
       <a
         href="/servicios"
-        class="inline-flex items-center gap-2 border border-[#C3A75D]/40 text-[#C3A75D] hover:bg-[#C3A75D]/10 transition-colors px-6 py-3 rounded-xl text-sm font-medium"
+        class="inline-flex items-center gap-2 border border-[#C3A75D]/40 text-(--color-accent) hover:bg-[#C3A75D]/10 hover:border-[#C3A75D]/60 transition-all duration-200 px-7 py-3.5 rounded-xl text-sm font-semibold"
       >
         Ver todos los servicios
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
       </a>
     </div>
   </div>

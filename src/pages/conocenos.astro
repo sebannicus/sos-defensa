@@ -7,7 +7,7 @@ import CTAFinal from '../components/sections/CTAFinal.astro';
 const equipo = [
   {
     nombre: 'Carol Garriga',
-    foto: '/carolgarriga.jpg',
+    foto: '/fotos-carol-garriga/carol_garriga_4.jpg',
     cargo: 'Abogada · Mediadora Familiar',
     formacion: [
       'Licenciada en Derecho',
@@ -18,7 +18,7 @@ const equipo = [
   },
   {
     nombre: 'Nancy Cuellar Nuñez',
-    foto: '/nancycuellar.jpg',
+    foto: '/fotos-nancy-cuellar/nancy_cuellar_5.jpg',
     cargo: 'Abogada · Mediadora Familiar',
     formacion: [
       'Licenciada en Ciencias Jurídicas y Sociales',
@@ -27,6 +27,27 @@ const equipo = [
       'Diplomado en Derecho de la Niñez y Adolescencia',
     ],
     descripcion: 'Con sólida formación académica y compromiso firme con la justicia y el bienestar familiar. Destacada por su habilidad para mediar y encontrar soluciones justas y equitativas en casos laborales y de familia.',
+  },
+];
+
+const valores = [
+  {
+    num: '01',
+    titulo: 'Empatía real',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>`,
+    texto: 'Escuchamos tu situación sin juzgarte. Entendemos que detrás de cada caso hay una persona que necesita apoyo.',
+  },
+  {
+    num: '02',
+    titulo: 'Transparencia',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`,
+    texto: 'Te explicamos el proceso con claridad, sin tecnicismos. Sabrás en todo momento en qué etapa está tu caso.',
+  },
+  {
+    num: '03',
+    titulo: 'Resultados',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+    texto: 'Trabajamos incansablemente para que obtengas lo que te corresponde. Cada caso recibe atención estratégica y personalizada.',
   },
 ];
 ---
@@ -38,41 +59,43 @@ const equipo = [
   <Header />
   <main class="pt-20">
     <!-- Hero interior -->
-    <section class="bg-[#0E0E10] py-16 border-b border-[#232326]">
+    <section class="bg-(--color-bg) py-16 border-b border-(--color-bg-hover)">
       <div class="max-w-6xl mx-auto px-4 md:px-6">
-        <p class="text-[#C3A75D] text-sm font-medium mb-3">Nuestro equipo</p>
-        <h1 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-[#F4F4F4] mb-4">
+        <p class="text-(--color-accent) text-xs font-semibold tracking-[0.2em] uppercase mb-3">Nuestro equipo</p>
+        <h1 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-(--color-text-primary) mb-4">
           Conócenos
         </h1>
-        <p class="text-[#BDBDBD] max-w-2xl text-lg">
-          Un equipo 100% femenino, especializado y comprometido con la justicia. Detrás de cada caso hay una persona, y lo sabemos.
+        <p class="text-(--color-text-secondary) max-w-2xl text-lg">
+          Trabajamos con dedicación, responsabilidad y confianza, entregando soluciones efectivas, oportunas, creativas y estratégicas a nuestros clientes.
         </p>
       </div>
     </section>
 
     <!-- Equipo -->
-    <section class="bg-[#0E0E10] py-20">
+    <section class="bg-(--color-bg) py-20">
       <div class="max-w-6xl mx-auto px-4 md:px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {equipo.map((persona) => (
-            <div class="bg-[#17171A] rounded-2xl overflow-hidden border border-[#232326]">
-              <div class="aspect-[4/3] overflow-hidden bg-[#232326]">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {equipo.map((persona, i) => (
+            <div class={`reveal-up stagger-${i + 1} bg-(--color-bg-surface) rounded-2xl overflow-hidden border border-(--color-bg-hover) card-lift group`}>
+              <!-- Gold top line -->
+              <div class="h-0.75 bg-linear-to-r from-[#8A6F2F] via-[#C3A75D] to-[#E2C98A]"></div>
+              <div class="aspect-4/3 overflow-hidden bg-(--color-bg-hover)">
                 <img
                   src={persona.foto}
                   alt={persona.nombre}
-                  class="w-full h-full object-cover object-top"
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div class="p-8">
-                <h2 class="font-['Playfair_Display'] text-2xl font-bold text-[#F4F4F4] mb-1">
+                <h2 class="font-['Playfair_Display'] text-2xl font-bold text-(--color-text-primary) mb-1">
                   {persona.nombre}
                 </h2>
-                <p class="text-[#C3A75D] text-sm font-medium mb-4">{persona.cargo}</p>
-                <p class="text-[#BDBDBD] text-sm leading-relaxed mb-6">{persona.descripcion}</p>
+                <p class="text-(--color-accent) text-sm font-medium mb-4">{persona.cargo}</p>
+                <p class="text-(--color-text-secondary) text-sm leading-relaxed mb-6">{persona.descripcion}</p>
                 <ul class="space-y-2">
                   {persona.formacion.map((f) => (
-                    <li class="flex items-start gap-2 text-[#8C8C8C] text-xs">
-                      <span class="text-[#C3A75D] mt-0.5">✓</span>
+                    <li class="flex items-start gap-2 text-(--color-text-muted) text-xs">
+                      <span class="text-(--color-accent) mt-0.5">✓</span>
                       {f}
                     </li>
                   ))}
@@ -86,20 +109,28 @@ const equipo = [
 
     <!-- Valores -->
     <section class="section-warm py-20">
-      <div class="max-w-6xl mx-auto px-4 md:px-6 text-center">
-        <h2 class="font-['Playfair_Display'] text-3xl font-bold text-[#0E0E10] mb-4">Nuestro compromiso</h2>
-        <p class="text-[#232326]/70 max-w-2xl mx-auto mb-12">
-          En SOS Defensa creemos que el acceso a la justicia no debería depender de tu situación económica.
-        </p>
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="text-center mb-12 reveal-up">
+          <p class="text-[#8A6F2F] text-xs font-semibold tracking-[0.2em] uppercase mb-3">Lo que nos define</p>
+          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-[#0E0E10] mb-4">Nuestro compromiso</h2>
+          <p class="text-[#232326]/70 max-w-xl mx-auto text-sm">
+            En SOS Defensa creemos que cada persona merece una defensa estratégica, transparente y con resultados reales.
+          </p>
+        </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {[
-            { titulo: 'Empatía real', texto: 'Escuchamos tu situación sin juzgarte. Entendemos que detrás de cada caso hay una persona que necesita apoyo.' },
-            { titulo: 'Transparencia', texto: 'Te explicamos el proceso con claridad, sin tecnicismos. Sabrás en todo momento en qué etapa está tu caso.' },
-            { titulo: 'Resultados', texto: 'Trabajamos incansablemente para que obtengas lo que te corresponde. Los honorarios se acuerdan con transparencia antes de comenzar.' },
-          ].map(({ titulo, texto }) => (
-            <div class="bg-white rounded-xl p-6 text-left shadow-sm">
-              <h3 class="font-['Playfair_Display'] text-lg font-bold text-[#0E0E10] mb-2">{titulo}</h3>
-              <p class="text-[#232326]/70 text-sm leading-relaxed">{texto}</p>
+          {valores.map((v, i) => (
+            <div class={`reveal-up stagger-${i + 1} relative bg-white rounded-2xl overflow-hidden card-lift group`}>
+              <div class="h-0.75 bg-linear-to-r from-[#8A6F2F] via-[#C3A75D] to-[#E2C98A]"></div>
+              <div class="p-7">
+                <div class="flex items-start justify-between mb-4">
+                  <div class="w-10 h-10 rounded-xl bg-[#C3A75D]/10 border border-[#C3A75D]/20 flex items-center justify-center text-[#C3A75D] group-hover:bg-[#C3A75D]/20 transition-colors duration-300">
+                    <span set:html={v.icon} />
+                  </div>
+                  <span class="font-['Playfair_Display'] text-4xl font-bold text-[#C3A75D] opacity-15 leading-none select-none">{v.num}</span>
+                </div>
+                <h3 class="font-['Playfair_Display'] text-lg font-bold text-[#0E0E10] mb-2 group-hover:text-[#8A6F2F] transition-colors duration-200">{v.titulo}</h3>
+                <p class="text-[#232326]/70 text-sm leading-relaxed">{v.texto}</p>
+              </div>
             </div>
           ))}
         </div>

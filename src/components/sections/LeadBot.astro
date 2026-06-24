@@ -1,12 +1,11 @@
 ---
-// TEST: número de Sebastián. Cambiar a 56998078460 para producción.
-const WA_NUMBER = '56996425227';
+const WA_NUMBER = '56998078460';
 ---
 
-<div class="bg-[#0E0E10] rounded-2xl overflow-hidden shadow-xl border border-[#232326]">
+<div class="bg-(--color-bg) rounded-2xl overflow-hidden shadow-xl border border-(--color-bg-hover)">
 
   <!-- Header del chat -->
-  <div class="flex items-center gap-3 px-5 py-4 border-b border-[#232326] bg-[#17171A]">
+  <div class="flex items-center gap-3 px-5 py-4 border-b border-(--color-bg-hover) bg-(--color-bg-surface)">
     <div class="relative shrink-0">
       <div class="w-10 h-10 rounded-full bg-[#C3A75D]/15 border border-[#C3A75D]/30 flex items-center justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#C3A75D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -35,7 +34,7 @@ const WA_NUMBER = '56996425227';
   ></div>
 
   <!-- Área de opciones -->
-  <div id="bot-options" class="px-4 pb-5 pt-3 border-t border-[#1A1A1D] min-h-[72px]"></div>
+  <div id="bot-options" class="px-4 pb-5 pt-3 border-t border-(--color-bg-hover) min-h-[72px]"></div>
 
 </div>
 
@@ -239,7 +238,7 @@ const WA_NUMBER = '56996425227';
 • Documentos: ${a.documentos || '-'}
 • Ciudad: ${a.ciudad || '-'}
 
-Quisiera agendar una consulta gratuita.`;
+Quisiera agendar una hora.`;
 
     const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`;
 

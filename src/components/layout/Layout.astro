@@ -1,5 +1,6 @@
 ---
 import '../../styles/global.css';
+import SilkBackground from '../sections/SilkBackground.astro';
 
 interface Props {
   title: string;
@@ -10,7 +11,7 @@ interface Props {
 
 const {
   title,
-  description = 'Abogadas especializadas en derecho laboral y familiar en La Serena y Coquimbo. Consulta gratuita. Honorarios claros según tu causa.',
+  description = 'Abogadas especializadas en derecho laboral y familiar en La Serena y Coquimbo. Agenda tu hora fácil y rápido. Respuesta inmediata por WhatsApp.',
   image = '/og-image.jpg',
   canonical,
 } = Astro.props;
@@ -22,7 +23,7 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,8 +42,10 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
     <meta property="og:locale" content="es_CL" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Favicon -->
+    <!-- Favicon: logo SOS Defensa -->
     <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="shortcut icon" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -92,6 +95,8 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
     </script>
   </head>
   <body>
+    <SilkBackground />
+
     <!-- GTM noscript -->
     {GTM_ID && (
       <noscript>
@@ -124,10 +129,10 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
 
     <!-- Floating WhatsApp button (desktop) -->
     <a
-      href="https://wa.me/56998078460?text=Hola%2C%20quiero%20una%20consulta%20gratuita"
+      href="https://wa.me/56998078460?text=Hola%2C%20quiero%20agendar%20una%20hora"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Consulta gratuita por WhatsApp"
+      aria-label="Agenda tu hora por WhatsApp"
       class="flex fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-[#25D366] text-white items-center justify-center shadow-xl animate-wa-pulse group hover:scale-110 transition-transform duration-200"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -136,7 +141,7 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
       </svg>
       <!-- Tooltip -->
       <span class="absolute right-14 bg-[#17171A] text-[#F4F4F4] text-xs px-3 py-1.5 rounded-lg border border-[#C3A75D]/20 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none font-medium shadow-lg">
-        Consulta gratuita
+        Agenda tu hora
       </span>
     </a>
 

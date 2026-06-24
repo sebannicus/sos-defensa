@@ -1,35 +1,45 @@
 ---
 ---
 
-<section class="bg-[#17171A] py-20">
-  <div class="max-w-3xl mx-auto px-4 md:px-6 text-center">
-    <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-[#F4F4F4] mb-4">
-      ¿No sabes por dónde empezar?
+<section class="relative overflow-hidden py-28 bg-[#0A0A0C]">
+  <!-- Decorative top border -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#C3A75D]/50 to-transparent"></div>
+
+  <!-- Gold orbs -->
+  <div class="absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C3A75D]/7 rounded-full blur-[150px] pointer-events-none"></div>
+  <div class="absolute right-1/4 top-1/2 translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#C3A75D]/4 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <!-- Dot grid -->
+  <div class="absolute inset-0 dot-grid pointer-events-none opacity-20"></div>
+
+  <div class="relative max-w-3xl mx-auto px-4 md:px-6 text-center reveal-up">
+    <p class="text-[#C3A75D] text-xs font-semibold tracking-[0.3em] uppercase mb-5">Dé el primer paso</p>
+    <h2 class="font-['Playfair_Display'] text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 leading-tight">
+      ¿No sabes por<br />dónde empezar?
     </h2>
-    <p class="text-[#BDBDBD] text-lg mb-10 leading-relaxed">
-      Cuéntanos tu situación. La primera consulta es gratuita y sin compromiso.
-      Te orientamos con claridad y te decimos si tenemos un caso.
+    <p class="text-white/55 text-lg mb-10 leading-relaxed max-w-xl mx-auto">
+      Cuéntanos tu situación. Una abogada te responde de inmediato y te orienta con claridad sobre tu caso.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a
-        href="https://wa.me/56998078460?text=Hola%2C%20quiero%20una%20consulta%20gratuita"
+        href="https://wa.me/56998078460?text=Hola%2C%20quiero%20agendar%20una%20hora"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center justify-center gap-3 btn-primary px-8 py-4 rounded-xl text-base font-semibold"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
           <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.526 5.837L.057 23.854l6.187-1.621A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.214-3.724.977.994-3.636-.234-.374A9.778 9.778 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/>
         </svg>
-        Escribir por WhatsApp
+        Agenda tu hora por WhatsApp
       </a>
       <a
         href="/contacto"
-        class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-[#232326] text-[#BDBDBD] hover:text-[#F4F4F4] hover:border-[#C3A75D]/40 transition-colors text-base font-medium"
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-white/15 text-white/65 hover:border-[#C3A75D]/50 hover:text-white transition-all duration-200 text-base font-medium"
       >
         Ir a Contacto
       </a>
     </div>
-    <p class="text-[#8C8C8C] text-sm mt-6">Sin compromiso · Solo pagas si ganamos</p>
+    <p class="text-white/25 text-sm mt-7 tracking-wide">La Serena · Coquimbo · También por Zoom</p>
   </div>
 </section>

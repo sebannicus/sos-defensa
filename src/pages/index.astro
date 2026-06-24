@@ -7,21 +7,27 @@ import Pilares from '../components/sections/Pilares.astro';
 import ConsultaSection from '../components/sections/ConsultaSection.astro';
 import ServiciosResumen from '../components/sections/ServiciosResumen.astro';
 import Testimonios from '../components/sections/Testimonios.astro';
+import LeadSection from '../components/sections/LeadSection.astro';
+import VisitaSection from '../components/sections/VisitaSection.astro';
 import FAQ from '../components/sections/FAQ.astro';
 import CTAFinal from '../components/sections/CTAFinal.astro';
+import InfoStrip from '../components/sections/InfoStrip.astro';
 ---
 
 <Layout
   title="SOS Defensa — Abogadas en Derecho Laboral y Familiar | Región de Coquimbo"
-  description="Abogadas especializadas en derecho laboral y familiar en La Serena y Coquimbo. Consulta gratuita. Honorarios claros según tu causa."
+  description="Abogadas especializadas en derecho laboral y familiar en La Serena y Coquimbo. Agenda tu hora por WhatsApp. Atención vespertina por Zoom."
 >
   <Header />
   <main class="pt-0">
     <Hero />
+    <InfoStrip />
     <Pilares />
     <ConsultaSection />
     <ServiciosResumen />
     <Testimonios />
+    <LeadSection />
+    <VisitaSection />
     <FAQ />
     <CTAFinal />
   </main>

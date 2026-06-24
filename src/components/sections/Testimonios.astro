@@ -2,38 +2,37 @@
 const testimonios = [
   {
     nombre: 'María G.',
-    texto: 'Gracias a SOS Defensa, pude demandar sin dinero por adelantado y pagar el servicio cuando recibí mi indemnización. ¡Ahora tengo la tranquilidad que merezco!',
+    texto: 'Encontré en SOS Defensa el apoyo que necesitaba. Me orientaron desde el primer mensaje y resolvieron mi caso de forma rápida y efectiva.',
     caso: 'Despido injustificado',
   },
   {
     nombre: 'Juan P.',
-    texto: 'Estaba desesperado por el maltrato en mi trabajo. Contacté a SOS Defensa y me ayudaron a demandar sin adelantar dinero. ¡Recibí mi indemnización y estoy protegido!',
+    texto: 'Estaba desesperado por la situación en mi trabajo. Me atendieron de inmediato, con claridad y profesionalismo. Logré recuperar lo que me correspondía.',
     caso: 'Autodespido por acoso laboral',
   },
 ];
 
 const metricas = [
-  { numero: 4, sufijo: '', label: 'Años de experiencia' },
-  { numero: 2, sufijo: '', label: 'Abogadas especializadas' },
-  { numero: 100, sufijo: '%', label: 'Consulta gratuita' },
+  { numero: 4,   sufijo: '',  label: 'Años de experiencia' },
+  { numero: 2,   sufijo: '',  label: 'Abogadas especializadas' },
+  { numero: 100, sufijo: '%', label: 'Atención personalizada' },
 ];
 ---
 
-<section class="section-warm py-24 reveal-section">
+<section class="section-warm py-16 md:py-24 reveal-section">
   <div class="max-w-6xl mx-auto px-4 md:px-6">
 
-    <!-- Imagen + texto intro -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
       <div class="reveal-left">
-        <p class="text-[#8A6F2F] text-sm font-medium mb-3">Historias reales</p>
+        <p class="text-[#8A6F2F] text-xs font-semibold tracking-[0.2em] uppercase mb-3">Lo que dicen nuestros clientes</p>
         <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-[#0E0E10] mb-4">
-          Lo que dicen nuestros clientes
+          Resultados que hablan por sí solos
         </h2>
-        <p class="text-[#232326]/70 leading-relaxed">
-          Casos reales de personas que recuperaron lo que les correspondía — sin pagar un peso por adelantado.
+        <p class="text-[#232326]/70 leading-relaxed text-sm">
+          Casos reales de personas que recuperaron lo que les correspondía con el apoyo de SOS Defensa.
         </p>
       </div>
-      <div class="reveal-right rounded-2xl overflow-hidden aspect-video shadow-lg">
+      <div class="reveal-right rounded-2xl overflow-hidden aspect-video shadow-xl">
         <img
           src="https://images.unsplash.com/photo-1698047682091-782b1e5c6536?w=800&q=80&fit=crop&auto=format"
           alt="Reunión profesional de abogadas con cliente"
@@ -43,55 +42,67 @@ const metricas = [
       </div>
     </div>
 
-    <!-- Testimonios -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+    <!-- Testimonial cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
       {testimonios.map((t, i) => (
-        <div class={`reveal-up stagger-${i + 1} bg-white rounded-2xl p-8 shadow-sm`}>
-          <div class="flex gap-1 mb-4">
-            {[1,2,3,4,5].map(() => (
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#C3A75D]" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
-            ))}
-          </div>
-          <blockquote class="text-[#17171A] text-base leading-relaxed mb-6 italic">
-            "{t.texto}"
-          </blockquote>
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="font-semibold text-[#0E0E10]">{t.nombre}</p>
-              <p class="text-[#8C8C8C] text-sm">{t.caso}</p>
+        <div class={`reveal-up stagger-${i + 1} relative bg-white rounded-2xl overflow-hidden shadow-sm card-lift`}>
+          <!-- Gold top line -->
+          <div class="h-0.75 bg-linear-to-r from-[#8A6F2F] via-[#C3A75D] to-[#E2C98A]"></div>
+          <div class="relative p-8">
+            <!-- Decorative quote mark -->
+            <span class="absolute top-3 right-6 font-['Playfair_Display'] text-8xl text-[#C3A75D] opacity-[0.08] leading-none select-none pointer-events-none">"</span>
+            <!-- Stars -->
+            <div class="flex gap-1 mb-5 relative z-10">
+              {[1,2,3,4,5].map(() => (
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#C3A75D]" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
             </div>
-            <div class="w-10 h-10 rounded-full bg-[#C3A75D]/20 flex items-center justify-center">
-              <span class="text-[#C3A75D] font-bold text-lg">{t.nombre.charAt(0)}</span>
+            <!-- Quote -->
+            <blockquote class="text-[#17171A] text-base leading-relaxed mb-6 italic relative z-10">
+              "{t.texto}"
+            </blockquote>
+            <!-- Author -->
+            <div class="flex items-center justify-between border-t border-[#F0EBE3] pt-5 relative z-10">
+              <div>
+                <p class="font-semibold text-[#0E0E10] text-sm">{t.nombre}</p>
+                <p class="text-[#8C8C8C] text-xs mt-0.5">{t.caso}</p>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-[#C3A75D]/20 border border-[#C3A75D]/30 flex items-center justify-center">
+                <span class="text-[#C3A75D] font-bold text-sm">{t.nombre.charAt(0)}</span>
+              </div>
             </div>
           </div>
         </div>
       ))}
     </div>
 
-    <!-- Métricas animadas -->
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
-      {metricas.map(({ numero, sufijo, label }, i) => (
-        <div class={`reveal-up stagger-${i + 1}`}>
-          <p
-            class="font-['Playfair_Display'] text-5xl md:text-6xl font-bold text-[#0E0E10] mb-1 counter"
-            data-target={numero}
-            data-sufijo={sufijo}
-          >
-            0{sufijo}
-          </p>
-          <p class="text-[#232326]/70 text-sm">{label}</p>
-        </div>
-      ))}
+    <!-- Stats row -->
+    <div class="relative pt-12">
+      <div class="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#C3A75D]/35 to-transparent"></div>
+      <div class="grid grid-cols-3 gap-4 md:gap-6 text-center">
+        {metricas.map(({ numero, sufijo, label }, i) => (
+          <div class={`reveal-up stagger-${i + 1}`}>
+            <p
+              class="font-['Playfair_Display'] text-4xl sm:text-5xl md:text-6xl font-bold text-[#0E0E10] mb-2 counter"
+              data-target={numero}
+              data-sufijo={sufijo}
+            >
+              0{sufijo}
+            </p>
+            <div class="w-8 h-px bg-[#C3A75D]/60 mx-auto mb-2"></div>
+            <p class="text-[#232326]/65 text-sm">{label}</p>
+          </div>
+        ))}
+      </div>
     </div>
+
   </div>
 </section>
 
 <script>
-  // Contador animado al entrar en viewport
   const counters = document.querySelectorAll<HTMLElement>('.counter');
-
   const animateCounter = (el: HTMLElement) => {
     const target = parseInt(el.dataset.target ?? '0');
     const sufijo = el.dataset.sufijo ?? '';
@@ -105,7 +116,6 @@ const metricas = [
       if (current >= target) clearInterval(timer);
     }, duration / steps);
   };
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -114,6 +124,5 @@ const metricas = [
       }
     });
   }, { threshold: 0.5 });
-
   counters.forEach((c) => observer.observe(c));
 </script>

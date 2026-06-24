@@ -1,108 +1,165 @@
 ---
 ---
 
-<section class="relative min-h-screen flex items-center bg-[#0E0E10] pt-20 overflow-hidden">
+<section class="relative min-h-screen flex items-center bg-transparent pt-20 overflow-hidden">
 
-  <!-- ─── FONDOS ─── -->
-  <div class="absolute inset-0 z-0">
-    <img
-      id="bg-carol"
-      src="/carolgarriga.jpg"
-      alt=""
-      aria-hidden="true"
-      class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-1000 opacity-100"
-      loading="eager"
-    />
-    <img
-      id="bg-nancy"
-      src="/nancycuellar1.jpg"
-      alt=""
-      aria-hidden="true"
-      class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-1000 opacity-0"
-      loading="eager"
-    />
-    <!-- Overlay oscuro izq → suave der -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0E0E10] via-[#0E0E10]/88 to-[#0E0E10]/35"></div>
-    <!-- Viñeta inferior -->
-    <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0E0E10] to-transparent"></div>
-    <!-- Viñeta superior -->
-    <div class="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#0E0E10]/70 to-transparent"></div>
-  </div>
-
-  <!-- ─── DECORATIVOS ─── -->
-  <!-- Orbe dorado grande derecha -->
-  <div class="absolute right-[8%] top-1/2 -translate-y-1/2 w-[580px] h-[580px] bg-[#C3A75D]/7 rounded-full blur-[140px] pointer-events-none"></div>
-  <!-- Orbe dorado pequeño izquierda-abajo -->
-  <div class="absolute left-[-8%] bottom-[10%] w-[300px] h-[300px] bg-[#C3A75D]/5 rounded-full blur-[90px] pointer-events-none"></div>
-  <!-- Línea vertical dorada decorativa -->
-  <div class="absolute top-[18%] right-[37%] w-px h-[38%] bg-gradient-to-b from-transparent via-[#C3A75D]/20 to-transparent hidden lg:block"></div>
-  <!-- Dot grid overlay sutil -->
+  <!-- ─── FONDOS DECORATIVOS ─── -->
+  <div class="absolute right-[5%] top-[25%] w-[600px] h-[600px] bg-[#C3A75D]/06 rounded-full blur-[160px] pointer-events-none"></div>
+  <div class="absolute left-[-8%] bottom-[10%] w-[350px] h-[350px] bg-[#C3A75D]/04 rounded-full blur-[100px] pointer-events-none"></div>
   <div
-    class="absolute inset-0 opacity-[0.022] pointer-events-none"
+    class="absolute inset-0 opacity-[0.018] pointer-events-none"
     style="background-image: radial-gradient(circle, #C3A75D 1px, transparent 1px); background-size: 32px 32px;"
   ></div>
 
-  <!-- ─── CONTENIDO ─── -->
-  <div class="relative z-10 w-full max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
-    <div class="max-w-xl">
+  <!-- ─── LAYOUT PRINCIPAL ─── -->
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24 flex flex-col lg:flex-row items-center justify-between gap-8 xl:gap-14">
 
-      <!-- Badge legal -->
-      <div class="hero-badge inline-flex items-center gap-2 bg-[#C3A75D]/10 border border-[#C3A75D]/25 rounded-full px-4 py-1.5 mb-8 opacity-0">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D] animate-pulse"></span>
-        <span class="text-[#C3A75D] text-xs font-medium tracking-wider uppercase">La Serena · Coquimbo</span>
+    <!-- ─── COLUMNA IZQUIERDA: texto ─── -->
+    <div class="w-full lg:flex-1 lg:max-w-[520px]">
+
+      <!-- Nombre de marca -->
+      <div class="hero-brand opacity-0 mb-4">
+        <p class="font-['Playfair_Display'] font-bold tracking-tight leading-none">
+          <span class="text-gradient-gold text-4xl sm:text-5xl md:text-6xl xl:text-7xl">SOS Defensa</span>
+        </p>
+        <p class="text-(--color-text-muted) text-xs font-semibold tracking-[0.35em] uppercase mt-2">Abogadas · La Serena · Coquimbo</p>
       </div>
 
-      <!-- H1 -->
-      <h1 class="hero-h1 font-['Playfair_Display'] font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-[#F4F4F4] mb-6 opacity-0">
+      <!-- Badge -->
+      <div class="hero-badge inline-flex items-center gap-2 bg-[#C3A75D]/10 border border-[#C3A75D]/25 rounded-full px-4 py-1.5 mb-6 md:mb-7 opacity-0">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D] animate-pulse"></span>
+        <span class="text-(--color-accent) text-xs font-medium tracking-wider uppercase">Estudio Jurídico</span>
+      </div>
+
+      <!-- Tagline -->
+      <h1 class="hero-h1 font-['Playfair_Display'] font-bold text-2xl sm:text-3xl md:text-4xl xl:text-5xl leading-tight text-(--color-text-primary) mb-5 opacity-0">
         Defiende tus derechos.<br />
-        <span class="text-gradient-gold">Consulta gratuita siempre.</span>
+        <span class="text-(--color-text-secondary) font-normal text-xl sm:text-2xl md:text-3xl xl:text-4xl">Hasta que la equidad se haga costumbre.</span>
       </h1>
 
       <!-- Subtítulo -->
-      <p class="hero-sub text-[#BDBDBD] text-lg leading-relaxed mb-8 opacity-0">
-        Abogadas especializadas en derecho laboral y familiar.<br/>
-        <strong class="text-[#F4F4F4]">Consulta gratuita. Honorarios claros según tu causa.</strong>
+      <p class="hero-sub text-(--color-text-secondary) text-base md:text-lg leading-relaxed mb-7 md:mb-8 opacity-0">
+        Especializadas en derecho laboral y familiar.<br class="hidden sm:block"/>
+        <strong class="text-(--color-text-primary)">Respuesta inmediata · Zoom en horario vespertino.</strong>
       </p>
 
       <!-- CTAs -->
-      <div class="hero-cta flex flex-col sm:flex-row gap-4 mb-10 opacity-0">
+      <div class="hero-cta flex flex-col sm:flex-row gap-3 mb-8 md:mb-10 opacity-0">
         <a
-          href="https://wa.me/56998078460?text=Hola%2C%20quiero%20una%20consulta%20gratuita"
+          href="https://wa.me/56998078460?text=Hola%2C%20quiero%20agendar%20una%20hora"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-3 btn-primary px-8 py-4 rounded-xl text-base font-semibold shadow-lg shadow-[#C3A75D]/10"
+          class="inline-flex items-center justify-center gap-3 btn-primary px-7 py-4 rounded-xl text-sm md:text-base font-semibold shadow-lg shadow-[#C3A75D]/10 w-full sm:w-auto"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
             <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.526 5.837L.057 23.854l6.187-1.621A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.214-3.724.977.994-3.636-.234-.374A9.778 9.778 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/>
           </svg>
-          Consulta gratuita por WhatsApp
+          Agenda tu hora por WhatsApp
+        </a>
+        <a
+          href="/contacto"
+          class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-sm md:text-base font-semibold border border-(--color-bg-hover) text-(--color-text-secondary) hover:border-[#C3A75D]/40 hover:text-(--color-text-primary) transition-all duration-200 w-full sm:w-auto"
+        >
+          Cuéntanos tu caso
         </a>
       </div>
 
-      <!-- Stats rápidos -->
-      <div class="hero-stats flex items-center gap-5 opacity-0">
+      <!-- Stats -->
+      <div class="hero-stats flex items-center gap-4 md:gap-5 opacity-0">
         <div>
-          <p class="text-[#C3A75D] text-lg font-bold font-['Playfair_Display']">4 años</p>
-          <p class="text-[#8C8C8C] text-xs">de trayectoria</p>
+          <p class="text-(--color-accent) text-base md:text-lg font-bold font-['Playfair_Display']">4 años</p>
+          <p class="text-(--color-text-muted) text-xs">de trayectoria</p>
         </div>
-        <div class="w-px h-8 bg-[#232326]"></div>
+        <div class="w-px h-7 bg-(--color-bg-hover)"></div>
         <div>
-          <p class="text-[#C3A75D] text-lg font-bold font-['Playfair_Display']">100%</p>
-          <p class="text-[#8C8C8C] text-xs">consulta gratuita</p>
+          <p class="text-(--color-accent) text-base md:text-lg font-bold font-['Playfair_Display']">Inmediata</p>
+          <p class="text-(--color-text-muted) text-xs">respuesta WhatsApp</p>
         </div>
-        <div class="w-px h-8 bg-[#232326]"></div>
+        <div class="w-px h-7 bg-(--color-bg-hover)"></div>
         <div>
-          <p class="text-[#C3A75D] text-lg font-bold font-['Playfair_Display']">Honorarios</p>
-          <p class="text-[#8C8C8C] text-xs">claros según tu causa</p>
+          <p class="text-(--color-accent) text-base md:text-lg font-bold font-['Playfair_Display']">Zoom</p>
+          <p class="text-(--color-text-muted) text-xs">horario vespertino</p>
         </div>
       </div>
 
+      <!-- ─── MOBILE PHOTO STRIP (< lg) ─── -->
+      <div class="lg:hidden hero-mobile-photos opacity-0 flex items-stretch justify-center gap-3 mt-10 w-full">
+        <div class="relative w-[46%] rounded-2xl overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.4)] border border-[#C3A75D]/20" style="aspect-ratio:3/4;">
+          <img src="/fotos-nancy-cuellar/nancy_cuellar_6.jpg" alt="Nancy Cuellar" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/80 to-transparent px-3 pt-8 pb-3">
+            <p class="text-white text-xs font-semibold">Nancy Cuellar</p>
+            <p class="text-[#C3A75D] text-[10px]">Abogada · Mediadora</p>
+          </div>
+        </div>
+        <div class="relative w-[46%] rounded-2xl overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.4)] border border-[#C3A75D]/20" style="aspect-ratio:3/4;">
+          <img src="/fotos-carol-garriga/carol_garriga_1.jpg" alt="Carol Garriga" class="w-full h-full object-cover object-[50%_15%]" loading="lazy" />
+          <div class="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/80 to-transparent px-3 pt-8 pb-3">
+            <p class="text-white text-xs font-semibold">Carol Garriga</p>
+            <p class="text-[#C3A75D] text-[10px]">Abogada · Mediadora</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── COLUMNA DERECHA: fotos + sello de marca centrado ─── -->
+    <div class="hero-cards hidden lg:flex items-stretch gap-5 shrink-0 relative
+                lg:w-[560px] lg:h-[520px]
+                xl:w-[660px] xl:h-[600px]
+                opacity-0">
+
+      <!-- Nancy (izquierda) -->
+      <div class="flex-1 relative rounded-2xl overflow-hidden shadow-[0_28px_64px_rgba(0,0,0,0.45)] border border-[#C3A75D]/25">
+        <img
+          src="/fotos-nancy-cuellar/nancy_cuellar_6.jpg"
+          alt="Nancy Cuellar — Abogada"
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div class="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/85 to-transparent px-5 pt-12 pb-5">
+          <p class="text-white font-semibold lg:text-sm xl:text-base">Nancy Cuellar</p>
+          <p class="text-[#C3A75D] text-xs font-medium">Abogada · Mediadora Familiar</p>
+        </div>
+      </div>
+
+      <!-- Carol (derecha) -->
+      <div class="flex-1 relative rounded-2xl overflow-hidden shadow-[0_28px_64px_rgba(0,0,0,0.45)] border border-[#C3A75D]/25">
+        <img
+          src="/fotos-carol-garriga/carol_garriga_1.jpg"
+          alt="Carol Garriga — Abogada"
+          class="w-full h-full object-cover object-[50%_15%]"
+          loading="eager"
+        />
+        <div class="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/85 to-transparent px-5 pt-12 pb-5">
+          <p class="text-white font-semibold lg:text-sm xl:text-base">Carol Garriga</p>
+          <p class="text-[#C3A75D] text-xs font-medium">Abogada · Mediadora Familiar</p>
+        </div>
+      </div>
+
+      <!-- Sello de marca SOS Defensa centrado sobre las fotos -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none select-none">
+        <div class="relative flex items-center justify-center
+                    lg:w-36 lg:h-36
+                    xl:w-44 xl:h-44
+                    rounded-full
+                    bg-[#0A0A0C]/75
+                    border border-[#C3A75D]/40
+                    shadow-[0_0_40px_rgba(195,167,93,0.35),0_0_80px_rgba(195,167,93,0.15)]
+                    backdrop-blur-sm">
+          <img
+            src="/logo.png"
+            alt="SOS Defensa"
+            class="lg:w-24 lg:h-24 xl:w-32 xl:h-32 object-contain"
+            style="filter: drop-shadow(0 0 10px rgba(195,167,93,0.7));"
+            loading="eager"
+          />
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce text-[#8C8C8C]">
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-bounce text-(--color-text-muted)">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
     </svg>
@@ -111,38 +168,29 @@
 
 <script>
   const items = [
-    { el: document.querySelector('.hero-badge'),  delay: 80 },
-    { el: document.querySelector('.hero-h1'),     delay: 240 },
-    { el: document.querySelector('.hero-sub'),    delay: 400 },
-    { el: document.querySelector('.hero-cta'),    delay: 560 },
-    { el: document.querySelector('.hero-stats'),  delay: 720 },
+    { el: document.querySelector('.hero-brand'),         delay: 80,  from: 'translateY(20px)' },
+    { el: document.querySelector('.hero-badge'),         delay: 200, from: 'translateY(16px)' },
+    { el: document.querySelector('.hero-h1'),            delay: 340, from: 'translateY(24px)' },
+    { el: document.querySelector('.hero-sub'),           delay: 460, from: 'translateY(24px)' },
+    { el: document.querySelector('.hero-cta'),           delay: 560, from: 'translateY(24px)' },
+    { el: document.querySelector('.hero-stats'),         delay: 660, from: 'translateY(20px)' },
+    { el: document.querySelector('.hero-cards'),         delay: 440, from: 'translateY(32px)' },
+    { el: document.querySelector('.hero-mobile-photos'), delay: 760, from: 'translateY(24px)' },
   ];
 
-  items.forEach(({ el, delay }) => {
+  items.forEach(({ el, delay, from }) => {
     if (!el) return;
     const elem = el as HTMLElement;
-    elem.style.transform = 'translateY(24px)';
+    elem.style.transform = from;
     setTimeout(() => {
-      elem.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      elem.style.transition = 'opacity 0.75s ease, transform 0.75s ease';
       elem.style.transform = 'translateY(0)';
       elem.style.opacity = '1';
     }, delay);
   });
 
-  const bgCarol = document.getElementById('bg-carol') as HTMLImageElement | null;
-  const bgNancy = document.getElementById('bg-nancy') as HTMLImageElement | null;
-
-  if (bgCarol && bgNancy) {
-    let showingCarol = true;
-    setInterval(() => {
-      if (showingCarol) {
-        bgCarol.style.opacity = '0';
-        bgNancy.style.opacity = '1';
-      } else {
-        bgCarol.style.opacity = '1';
-        bgNancy.style.opacity = '0';
-      }
-      showingCarol = !showingCarol;
-    }, 4000);
-  }
+  setTimeout(() => {
+    const cards = document.querySelector('.hero-cards') as HTMLElement | null;
+    if (cards) cards.style.animation = 'hero-float 7s ease-in-out infinite';
+  }, 1400);
 </script>

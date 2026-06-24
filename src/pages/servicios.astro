@@ -7,18 +7,18 @@ import CTAFinal from '../components/sections/CTAFinal.astro';
 const serviciosLaboral = [
   {
     titulo: 'Despido injustificado',
-    descripcion: '¿Te despidieron sin una causa válida? Tienes derecho a indemnización. Analizamos tu caso y te representamos sin costo inicial.',
+    descripcion: '¿Te despidieron sin una causa válida? Tienes derecho a indemnización. Analizamos tu caso y te representamos con dedicación.',
   },
   {
     titulo: 'Autodespido',
-    descripcion: 'Si tu empleador incumple sus obligaciones — no paga tu sueldo, te maltrata o modifica tu contrato sin tu consentimiento — puedes terminar el contrato y demandar.',
+    descripcion: 'Si tu empleador incumple sus obligaciones — no paga tu remuneración, te maltrata o modifica tu contrato sin tu consentimiento — puedes terminar el contrato y demandar.',
   },
   {
     titulo: 'Acoso laboral',
     descripcion: 'Ningún trabajador debe soportar un ambiente hostil. Te asesoramos para documentar y presentar tu denuncia ante los organismos competentes.',
   },
   {
-    titulo: 'Impago de salarios',
+    titulo: 'Impago de remuneraciones',
     descripcion: 'Tienes derecho a recibir tu remuneración completa y a tiempo. Recuperamos lo que te corresponde.',
   },
 ];
@@ -49,35 +49,38 @@ const serviciosFamilia = [
 
 <Layout
   title="Servicios — SOS Defensa | Derecho Laboral y Familiar Coquimbo"
-  description="Servicios jurídicos en derecho laboral y familiar. Despido injustificado, divorcio, pensión de alimentos y más. Consulta gratuita en Región de Coquimbo."
+  description="Servicios jurídicos en derecho laboral y familiar. Despido injustificado, divorcio, pensión de alimentos y más. Agenda tu hora en la Región de Coquimbo."
 >
   <Header />
   <main class="pt-20">
     <!-- Hero interior -->
-    <section class="bg-[#0E0E10] py-16 border-b border-[#232326]">
+    <section class="bg-(--color-bg) py-16 border-b border-(--color-bg-hover)">
       <div class="max-w-6xl mx-auto px-4 md:px-6">
-        <p class="text-[#C3A75D] text-sm font-medium mb-3">Nuestros servicios</p>
-        <h1 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-[#F4F4F4] mb-4">
+        <p class="text-(--color-accent) text-xs font-semibold tracking-[0.2em] uppercase mb-3">Nuestros servicios</p>
+        <h1 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-(--color-text-primary) mb-4">
           Áreas de práctica
         </h1>
-        <p class="text-[#BDBDBD] max-w-2xl text-lg">
-          Especialización en las situaciones legales que más impactan la vida de las personas y sus familias. Consulta gratuita sin compromiso.
+        <p class="text-(--color-text-secondary) max-w-2xl text-lg">
+          Especialización en las situaciones legales que más impactan la vida de las personas y sus familias. Agenda tu hora fácil y rápido por WhatsApp.
         </p>
       </div>
     </section>
 
     <!-- Derecho Laboral -->
-    <section id="laboral" class="bg-[#0E0E10] py-20">
+    <section id="laboral" class="bg-(--color-bg) py-20">
       <div class="max-w-6xl mx-auto px-4 md:px-6">
-        <div class="flex items-center gap-3 mb-10">
-          <div class="w-1 h-8 bg-gradient-to-b from-[#C3A75D] to-[#8A6F2F] rounded-full"></div>
-          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-[#F4F4F4]">Derecho Laboral</h2>
+        <div class="flex items-center gap-3 mb-10 reveal-up">
+          <div class="w-1 h-8 bg-linear-to-b from-[#C3A75D] to-[#8A6F2F] rounded-full"></div>
+          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-(--color-text-primary)">Derecho Laboral</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {serviciosLaboral.map((s) => (
-            <div class="bg-[#17171A] rounded-2xl p-8 border border-[#232326] hover:border-[#C3A75D]/30 transition-colors">
-              <h3 class="font-['Playfair_Display'] text-xl font-bold text-[#C3A75D] mb-3">{s.titulo}</h3>
-              <p class="text-[#BDBDBD] text-sm leading-relaxed">{s.descripcion}</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {serviciosLaboral.map((s, i) => (
+            <div class={`reveal-up stagger-${i + 1} bg-(--color-bg-surface) rounded-2xl overflow-hidden border border-(--color-bg-hover) card-lift group`}>
+              <div class="h-0.75 bg-linear-to-r from-[#8A6F2F] via-[#C3A75D] to-[#E2C98A]"></div>
+              <div class="p-8">
+                <h3 class="font-['Playfair_Display'] text-xl font-bold text-(--color-accent) mb-3 group-hover:text-(--color-accent-light) transition-colors duration-200">{s.titulo}</h3>
+                <p class="text-(--color-text-secondary) text-sm leading-relaxed">{s.descripcion}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -87,15 +90,18 @@ const serviciosFamilia = [
     <!-- Derecho de Familia -->
     <section id="familia" class="section-surface py-20">
       <div class="max-w-6xl mx-auto px-4 md:px-6">
-        <div class="flex items-center gap-3 mb-10">
-          <div class="w-1 h-8 bg-gradient-to-b from-[#C3A75D] to-[#8A6F2F] rounded-full"></div>
-          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-[#F4F4F4]">Derecho de Familia</h2>
+        <div class="flex items-center gap-3 mb-10 reveal-up">
+          <div class="w-1 h-8 bg-linear-to-b from-[#C3A75D] to-[#8A6F2F] rounded-full"></div>
+          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-(--color-text-primary)">Derecho de Familia</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {serviciosFamilia.map((s) => (
-            <div class="bg-[#0E0E10] rounded-2xl p-8 border border-[#232326] hover:border-[#C3A75D]/30 transition-colors">
-              <h3 class="font-['Playfair_Display'] text-xl font-bold text-[#C3A75D] mb-3">{s.titulo}</h3>
-              <p class="text-[#BDBDBD] text-sm leading-relaxed">{s.descripcion}</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {serviciosFamilia.map((s, i) => (
+            <div class={`reveal-up stagger-${i + 1} bg-(--color-bg) rounded-2xl overflow-hidden border border-(--color-bg-hover) card-lift group`}>
+              <div class="h-0.75 bg-linear-to-r from-[#8A6F2F] via-[#C3A75D] to-[#E2C98A]"></div>
+              <div class="p-8">
+                <h3 class="font-['Playfair_Display'] text-xl font-bold text-(--color-accent) mb-3 group-hover:text-(--color-accent-light) transition-colors duration-200">{s.titulo}</h3>
+                <p class="text-(--color-text-secondary) text-sm leading-relaxed">{s.descripcion}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -103,24 +109,72 @@ const serviciosFamilia = [
     </section>
 
     <!-- Mediación Familiar -->
-    <section id="mediacion" class="bg-[#0E0E10] py-20">
+    <section id="mediacion" class="bg-(--color-bg) py-20">
       <div class="max-w-6xl mx-auto px-4 md:px-6">
-        <div class="flex items-center gap-3 mb-10">
-          <div class="w-1 h-8 bg-gradient-to-b from-[#C3A75D] to-[#8A6F2F] rounded-full"></div>
-          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-[#F4F4F4]">Mediación Familiar</h2>
+        <div class="flex items-center gap-3 mb-10 reveal-up">
+          <div class="w-1 h-8 bg-linear-to-b from-[#C3A75D] to-[#8A6F2F] rounded-full"></div>
+          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-(--color-text-primary)">Mediación Familiar</h2>
         </div>
-        <div class="bg-[#17171A] rounded-2xl p-10 border border-[#232326] max-w-3xl">
-          <p class="text-[#BDBDBD] leading-relaxed mb-6">
-            La mediación permite resolver conflictos familiares fuera del tribunal, de forma más rápida, menos costosa y con acuerdos más duraderos porque ambas partes participan activamente en la solución.
-          </p>
-          <ul class="space-y-3">
-            {['Acuerdos cooperativos entre las partes', 'Reduce el tiempo y costo del proceso', 'Protege el bienestar de los hijos', 'Nuestras mediadoras tienen diplomados especializados'].map((item) => (
-              <li class="flex items-start gap-3 text-[#F4F4F4] text-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D] mt-1.5 shrink-0"></span>
-                {item}
-              </li>
-            ))}
-          </ul>
+        <div class="reveal-up stagger-1 bg-(--color-bg-surface) rounded-2xl overflow-hidden border border-(--color-bg-hover) card-lift max-w-3xl">
+          <div class="h-0.75 bg-linear-to-r from-[#8A6F2F] via-[#C3A75D] to-[#E2C98A]"></div>
+          <div class="p-10">
+            <p class="text-(--color-text-secondary) leading-relaxed mb-6">
+              La mediación permite resolver conflictos familiares fuera del tribunal, de forma más rápida, menos costosa y con acuerdos más duraderos porque ambas partes participan activamente en la solución.
+            </p>
+            <ul class="space-y-3">
+              {['Acuerdos cooperativos entre las partes', 'Reduce el tiempo y costo del proceso', 'Protege el bienestar de los hijos', 'Nuestras mediadoras tienen diplomados especializados'].map((item) => (
+                <li class="flex items-start gap-3 text-(--color-text-primary) text-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D] mt-1.5 shrink-0"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección equipo -->
+    <section class="section-surface py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="text-center mb-12 reveal-up">
+          <p class="text-(--color-accent) text-xs font-semibold tracking-[0.2em] uppercase mb-3">Quiénes te representan</p>
+          <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-(--color-text-primary)">
+            Tu caso, en manos expertas
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          {[
+            {
+              foto: '/fotos-carol-garriga/carol_garriga_4.jpg',
+              nombre: 'Carol Garriga',
+              cargo: 'Abogada · Mediadora Familiar',
+              foco: 'Derecho Laboral y Familia',
+            },
+            {
+              foto: '/fotos-nancy-cuellar/nancy_cuellar_2.jpg',
+              nombre: 'Nancy Cuellar',
+              cargo: 'Abogada · Mediadora Familiar',
+              foco: 'Derecho Laboral y Familia',
+            },
+          ].map((p, i) => (
+            <div class={`reveal-up stagger-${i + 1} relative bg-(--color-bg) rounded-2xl overflow-hidden border border-(--color-bg-hover) card-lift group`}>
+              <div class="h-0.75 bg-linear-to-r from-[#8A6F2F] via-[#C3A75D] to-[#E2C98A]"></div>
+              <div class="aspect-4/3 overflow-hidden">
+                <img
+                  src={p.foto}
+                  alt={p.nombre}
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-['Playfair_Display'] text-xl font-bold text-(--color-text-primary) mb-1">{p.nombre}</h3>
+                <p class="text-(--color-accent) text-sm font-medium mb-1">{p.cargo}</p>
+                <p class="text-(--color-text-muted) text-xs">{p.foco}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

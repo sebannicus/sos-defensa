@@ -1,58 +1,58 @@
 ---
 ---
 
-<section class="bg-[#0E0E10] py-24 overflow-hidden reveal-section">
+<section class="bg-(--color-bg) py-16 md:py-24 overflow-hidden reveal-section">
   <div class="max-w-6xl mx-auto px-4 md:px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-      <!-- Imagen -->
+      <!-- Imagen / Logo -->
       <div class="relative reveal-left">
         <div class="absolute -inset-4 bg-gradient-to-r from-[#C3A75D]/10 to-transparent rounded-3xl blur-xl"></div>
-        <div class="relative rounded-2xl overflow-hidden border border-[#232326] aspect-[4/3] bg-[#0E0E10] flex items-center justify-center">
-          <img src="/logo.png" alt="SOS Defensa" class="w-2/3 max-w-[280px] h-auto" loading="lazy" />
+        <div class="relative rounded-2xl overflow-hidden border border-(--color-bg-hover) bg-(--color-bg) flex items-center justify-center py-14 px-10">
+          <img src="/logo.png" alt="SOS Defensa" class="w-full max-w-[420px] h-auto" loading="lazy" />
         </div>
         <!-- Badge flotante -->
-        <div class="absolute -bottom-4 -right-4 bg-[#17171A] border border-[#C3A75D]/30 rounded-xl px-5 py-4 shadow-xl">
-          <p class="text-[#C3A75D] font-bold text-2xl font-['Playfair_Display']">100%</p>
-          <p class="text-[#BDBDBD] text-xs">Consulta gratuita</p>
+        <div class="absolute -bottom-4 -right-4 bg-(--color-bg-surface) border border-[#C3A75D]/30 rounded-xl px-5 py-4 shadow-xl">
+          <p class="text-(--color-accent) font-bold text-sm font-['Playfair_Display']">Respuesta</p>
+          <p class="text-(--color-text-secondary) text-xs">inmediata por WhatsApp</p>
         </div>
       </div>
 
       <!-- Texto -->
       <div class="reveal-right">
-        <p class="text-[#C3A75D] text-sm font-medium mb-3">¿Por qué elegirnos?</p>
-        <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-[#F4F4F4] mb-6 leading-tight">
+        <p class="text-(--color-accent) text-sm font-medium mb-3">¿Por qué elegirnos?</p>
+        <h2 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-(--color-text-primary) mb-6 leading-tight">
           Tu defensa comienza hoy.<br />
-          <span class="text-gradient-gold">Con honorarios transparentes.</span>
+          <span class="text-gradient-gold">Con dedicación y confianza.</span>
         </h2>
-        <p class="text-[#BDBDBD] leading-relaxed mb-8">
-          En SOS Defensa creemos en el acceso justo a la justicia. La primera consulta es siempre gratuita. Los honorarios varían según el tipo de causa: hay casos que trabajamos contra resultado positivo y otros que se acuerdan por adelantado — siempre con total transparencia antes de comenzar.
+        <p class="text-(--color-text-secondary) leading-relaxed mb-8">
+          En SOS Defensa trabajamos con dedicación, responsabilidad y confianza para entregar soluciones efectivas, oportunas y estratégicas. Al escribirnos por WhatsApp, te responde directamente una abogada.
         </p>
         <ul class="space-y-4 mb-10">
           {[
-            'Consulta gratuita sin compromiso',
-            'Honorarios transparentes según el tipo de causa',
-            'Equipo 100% femenino especializado',
+            'Agendamiento fácil y rápido',
+            'Una abogada te responde de inmediato por WhatsApp',
+            'Consultas por Zoom disponibles en horario vespertino (19:00–21:00 hrs)',
             'Atención personalizada en toda la Región de Coquimbo',
             'Experiencia en derecho laboral y familiar',
           ].map((item) => (
             <li class="flex items-start gap-3">
               <div class="w-5 h-5 rounded-full bg-[#C3A75D]/15 border border-[#C3A75D]/40 flex items-center justify-center shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-[#C3A75D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-(--color-accent)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
                 </svg>
               </div>
-              <span class="text-[#BDBDBD] text-sm">{item}</span>
+              <span class="text-(--color-text-secondary) text-sm">{item}</span>
             </li>
           ))}
         </ul>
         <a
-          href="https://wa.me/56998078460?text=Hola%2C%20quiero%20una%20consulta%20gratuita"
+          href="https://wa.me/56998078460?text=Hola%2C%20quiero%20agendar%20una%20hora"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 btn-primary px-6 py-3.5 rounded-xl text-sm font-semibold"
         >
-          Hablar con una abogada ahora
+          Agenda tu hora por WhatsApp
         </a>
       </div>
     </div>
