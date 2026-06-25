@@ -2,58 +2,94 @@
 const WA_NUMBER = '56998078460';
 ---
 
-<div class="bg-(--color-bg) rounded-2xl overflow-hidden shadow-xl border border-(--color-bg-hover)">
+<!-- Gradient border wrapper -->
+<div class="relative rounded-2xl p-[1px] shadow-[0_8px_40px_rgba(195,167,93,0.14)]"
+     style="background: linear-gradient(145deg, #6A5020 0%, #C3A75D 42%, #E2C98A 62%, #5A4018 100%);">
+  <div class="rounded-2xl overflow-hidden" style="background: #101012;">
 
-  <!-- Header del chat -->
-  <div class="flex items-center gap-3 px-5 py-4 border-b border-(--color-bg-hover) bg-(--color-bg-surface)">
-    <div class="relative shrink-0">
-      <div class="w-10 h-10 rounded-full bg-[#C3A75D]/15 border border-[#C3A75D]/30 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#C3A75D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
-        </svg>
+    <!-- ─── HEADER ─── -->
+    <div class="flex items-center gap-3 px-5 py-4"
+         style="background: linear-gradient(180deg, rgba(195,167,93,0.07) 0%, transparent 100%); border-bottom: 1px solid rgba(255,255,255,0.06);">
+      <!-- Avatar logo -->
+      <div class="relative shrink-0">
+        <div class="w-10 h-10 rounded-full overflow-hidden border border-[#C3A75D]/35 bg-[#1A1A1D] flex items-center justify-center">
+          <img src="/logo.png" alt="SOS Defensa" class="w-7 h-7 object-contain" loading="eager" />
+        </div>
+        <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-[#25D366] rounded-full border-2 border-[#101012]"></span>
       </div>
-      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-[#25D366] rounded-full border-2 border-[#17171A]"></span>
-    </div>
-    <div>
-      <p class="text-[#F4F4F4] text-sm font-semibold">Asistente SOS Defensa</p>
-      <p class="text-[#25D366] text-xs font-medium">En línea</p>
-    </div>
-    <div class="ml-auto">
-      <button id="bot-restart" class="text-[#555] hover:text-[#8C8C8C] transition-colors text-xs hidden" title="Reiniciar">
+      <!-- Info -->
+      <div class="flex-1 min-w-0">
+        <p class="text-[#F4F4F4] text-sm font-semibold leading-tight">SOS Defensa</p>
+        <p class="text-[#25D366] text-[11px] font-medium mt-0.5">Disponible ahora</p>
+      </div>
+      <!-- Step badge (se muestra desde paso 1) -->
+      <div id="bot-step-badge" class="hidden">
+        <span id="bot-step-text"
+              class="text-[#C3A75D] text-[11px] font-semibold bg-[#C3A75D]/10 border border-[#C3A75D]/22 rounded-full px-2.5 py-1 whitespace-nowrap">
+        </span>
+      </div>
+      <!-- Restart -->
+      <button id="bot-restart"
+              class="text-[#3A3A3E] hover:text-[#8C8C8C] transition-colors hidden ml-1 shrink-0"
+              title="Reiniciar">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
         </svg>
       </button>
     </div>
+
+    <!-- ─── MENSAJES ─── -->
+    <div id="bot-messages"
+         class="px-4 py-5 space-y-3.5 min-h-[260px] max-h-[340px] overflow-y-auto scroll-smooth"
+    ></div>
+
+    <!-- ─── OPCIONES ─── -->
+    <div id="bot-options"
+         class="px-4 pb-4 pt-3 min-h-[68px]"
+         style="border-top: 1px solid rgba(255,255,255,0.056);"
+    ></div>
+
+    <!-- ─── TRUST SIGNAL ─── -->
+    <div class="flex items-center justify-center gap-1.5 px-4 py-2"
+         style="border-top: 1px solid rgba(255,255,255,0.034);">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-[#3A3A3E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+      </svg>
+      <p class="text-[#3A3A3E] text-[10px] font-medium tracking-wide">Tu información es 100% confidencial</p>
+    </div>
+
   </div>
-
-  <!-- Área de mensajes -->
-  <div
-    id="bot-messages"
-    class="px-4 py-5 space-y-4 min-h-[280px] max-h-[360px] overflow-y-auto scroll-smooth"
-  ></div>
-
-  <!-- Área de opciones -->
-  <div id="bot-options" class="px-4 pb-5 pt-3 border-t border-(--color-bg-hover) min-h-[72px]"></div>
-
 </div>
 
-<script define:vars={{ WA_NUMBER }}>
+<script is:inline define:vars={{ WA_NUMBER }}>
   const messagesEl = document.getElementById('bot-messages');
   const optionsEl  = document.getElementById('bot-options');
   const restartBtn = document.getElementById('bot-restart');
+  const stepBadge  = document.getElementById('bot-step-badge');
+  const stepText   = document.getElementById('bot-step-text');
   const state = { answers: {} };
 
+  const STEP_LABELS = {
+    area: 'Paso 1 de 6', sit_laboral: 'Paso 2 de 6', sit_familiar: 'Paso 2 de 6',
+    tiempo: 'Paso 3 de 6', docs: 'Paso 4 de 6', ciudad: 'Paso 5 de 6', nombre: 'Paso 6 de 6',
+  };
+
+  function updateStepBadge(stepId) {
+    if (!stepBadge || !stepText) return;
+    const label = STEP_LABELS[stepId];
+    if (!label) { stepBadge.classList.add('hidden'); return; }
+    stepBadge.classList.remove('hidden');
+    stepText.textContent = label;
+  }
+
   const ICON_BOT = `
-    <div class="w-7 h-7 rounded-full bg-[#C3A75D]/15 border border-[#C3A75D]/30 flex items-center justify-center shrink-0 mt-0.5">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-[#C3A75D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
-      </svg>
+    <div class="w-7 h-7 rounded-full overflow-hidden border border-[#C3A75D]/28 bg-[#1A1A1D] flex items-center justify-center shrink-0 mt-0.5">
+      <img src="/logo.png" alt="" class="w-5 h-5 object-contain" />
     </div>`;
 
   const steps = {
     intro: {
-      bot: '¡Hola! 👋 Soy la asistente de SOS Defensa.\n\nTe haré 5 preguntas rápidas para que las abogadas puedan preparar tu consulta.',
+      bot: '¡Hola! 👋 Soy la asistente de SOS Defensa.\n\nTe haré 6 preguntas rápidas para conectarte con la abogada indicada.',
       options: [{ label: '▶ Comenzar', value: null, next: 'area' }]
     },
     area: {
@@ -82,6 +118,7 @@ const WA_NUMBER = '56998078460';
         { label: 'Divorcio',                    value: 'Divorcio',                    next: 'tiempo' },
         { label: 'Pensión de alimentos',        value: 'Pensión de alimentos',        next: 'tiempo' },
         { label: 'Cuidado personal de hijos',   value: 'Cuidado personal de hijos',   next: 'tiempo' },
+        { label: 'Relación directa y regular',  value: 'Relación directa y regular',  next: 'tiempo' },
         { label: 'Mediación familiar',          value: 'Mediación familiar',          next: 'tiempo' },
         { label: 'Otra situación',              value: 'Otra situación familiar',     next: 'tiempo' }
       ]
@@ -100,9 +137,9 @@ const WA_NUMBER = '56998078460';
       bot: '¿Tienes documentos relacionados con tu caso?\n(contrato, liquidaciones, carta de despido...)',
       key: 'documentos',
       options: [
-        { label: '✅ Sí, tengo',    value: 'Tiene documentos',        next: 'ciudad' },
-        { label: '📄 Tengo algunos', value: 'Tiene algunos documentos', next: 'ciudad' },
-        { label: '❌ No tengo',      value: 'No tiene documentos',      next: 'ciudad' }
+        { label: '✅ Sí, tengo',      value: 'Tiene documentos',          next: 'ciudad' },
+        { label: '📄 Tengo algunos',  value: 'Tiene algunos documentos',  next: 'ciudad' },
+        { label: '❌ No tengo',        value: 'No tiene documentos',       next: 'ciudad' }
       ]
     },
     ciudad: {
@@ -129,14 +166,13 @@ const WA_NUMBER = '56998078460';
 
   function addBotMessage(text) {
     return new Promise(resolve => {
-      // Indicador de escritura
       const typing = document.createElement('div');
-      typing.className = 'flex items-start gap-2';
+      typing.className = 'flex items-start gap-2.5';
       typing.innerHTML = `${ICON_BOT}
-        <div class="bg-[#17171A] border border-[#232326] rounded-2xl rounded-tl-sm px-4 py-3 flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D]/70 animate-bounce" style="animation-delay:0ms"></span>
-          <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D]/70 animate-bounce" style="animation-delay:150ms"></span>
-          <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D]/70 animate-bounce" style="animation-delay:300ms"></span>
+        <div class="bg-[#1A1A1E] border border-white/[0.07] rounded-2xl rounded-tl-sm px-5 py-3.5 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D]/60 animate-bounce" style="animation-delay:0ms"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D]/60 animate-bounce" style="animation-delay:160ms"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C3A75D]/60 animate-bounce" style="animation-delay:320ms"></span>
         </div>`;
       messagesEl.appendChild(typing);
       scrollBottom();
@@ -144,10 +180,10 @@ const WA_NUMBER = '56998078460';
       setTimeout(() => {
         typing.remove();
         const msg = document.createElement('div');
-        msg.className = 'flex items-start gap-2 bot-msg-in';
+        msg.className = 'flex items-start gap-2.5 bot-msg-in';
         msg.innerHTML = `${ICON_BOT}
-          <div class="bg-[#17171A] border border-[#232326] rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
-            <p class="text-[#BDBDBD] text-sm leading-relaxed">${text.replace(/\n/g, '<br>')}</p>
+          <div class="bg-[#1A1A1E] border border-white/[0.07] rounded-2xl rounded-tl-sm px-4 py-3 max-w-[86%]">
+            <p class="text-[#D4D4D4] text-sm leading-relaxed">${text.replace(/\n/g, '<br>')}</p>
           </div>`;
         messagesEl.appendChild(msg);
         scrollBottom();
@@ -160,8 +196,9 @@ const WA_NUMBER = '56998078460';
     const msg = document.createElement('div');
     msg.className = 'flex justify-end user-msg-in';
     msg.innerHTML = `
-      <div class="bg-[#C3A75D]/15 border border-[#C3A75D]/30 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[80%]">
-        <p class="text-[#F4F4F4] text-sm">${label}</p>
+      <div class="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[82%]"
+           style="background: linear-gradient(135deg, rgba(195,167,93,0.18) 0%, rgba(138,111,47,0.12) 100%); border: 1px solid rgba(195,167,93,0.28);">
+        <p class="text-[#F0F0F0] text-sm">${label}</p>
       </div>`;
     messagesEl.appendChild(msg);
     scrollBottom();
@@ -175,8 +212,16 @@ const WA_NUMBER = '56998078460';
       wrap.className = 'flex gap-2';
       wrap.innerHTML = `
         <input id="bot-input" type="text" placeholder="${step.placeholder || 'Escribe aquí...'}"
-          class="flex-1 bg-[#17171A] border border-[#232326] rounded-xl px-4 py-3 text-[#F4F4F4] text-sm placeholder-[#444] outline-none focus:border-[#C3A75D]/50 transition-colors"/>
-        <button id="bot-send" class="btn-primary px-5 py-3 rounded-xl text-sm font-semibold shrink-0">Enviar</button>`;
+          class="flex-1 rounded-xl px-4 py-3 text-[#F4F4F4] text-sm placeholder-[#3A3A3E] outline-none transition-colors"
+          style="background: #1A1A1E; border: 1px solid rgba(255,255,255,0.08);"
+          onfocus="this.style.borderColor='rgba(195,167,93,0.45)'"
+          onblur="this.style.borderColor='rgba(255,255,255,0.08)'"
+        />
+        <button id="bot-send"
+          class="px-5 py-3 rounded-xl text-sm font-bold shrink-0 transition-all duration-150 hover:scale-[1.03] active:scale-[0.97]"
+          style="background: #C3A75D; color: #0E0E10;">
+          →
+        </button>`;
       optionsEl.appendChild(wrap);
 
       const input = document.getElementById('bot-input');
@@ -198,8 +243,19 @@ const WA_NUMBER = '56998078460';
       grid.className = 'flex flex-wrap gap-2';
       step.options.forEach(opt => {
         const btn = document.createElement('button');
-        btn.className = 'px-4 py-2.5 rounded-xl border border-[#2A2A2E] text-[#BDBDBD] text-sm hover:border-[#C3A75D]/50 hover:text-[#F4F4F4] hover:bg-[#C3A75D]/5 transition-all duration-200 font-medium';
+        btn.className = 'px-4 py-2 rounded-full text-xs font-semibold transition-all duration-150 active:scale-[0.96] cursor-pointer';
+        btn.style.cssText = 'border: 1px solid rgba(195,167,93,0.28); color: #C3A75D; background: rgba(195,167,93,0.07);';
         btn.textContent = opt.label;
+        btn.addEventListener('mouseenter', () => {
+          btn.style.background = 'rgba(195,167,93,0.18)';
+          btn.style.borderColor = 'rgba(195,167,93,0.52)';
+          btn.style.color = '#F4F4F4';
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.background = 'rgba(195,167,93,0.07)';
+          btn.style.borderColor = 'rgba(195,167,93,0.28)';
+          btn.style.color = '#C3A75D';
+        });
         btn.addEventListener('click', () => {
           if (step.key && opt.value) state.answers[step.key] = opt.value;
           if (opt.value) addUserMessage(opt.label);
@@ -216,12 +272,14 @@ const WA_NUMBER = '56998078460';
     if (nextId === 'done') { finalize(); return; }
     const step = steps[nextId];
     if (!step) return;
+    updateStepBadge(nextId);
     await addBotMessage(step.bot);
     renderOptions(step);
   }
 
   async function finalize() {
-    restartBtn.classList.remove('hidden');
+    if (stepBadge) stepBadge.classList.add('hidden');
+    if (restartBtn) restartBtn.classList.remove('hidden');
     const a = state.answers;
     const nombre = a.nombre || 'Sin nombre';
 
@@ -247,8 +305,9 @@ Quisiera agendar una hora.`;
       cta.className = 'flex justify-center';
       cta.innerHTML = `
         <a href="${waUrl}" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center gap-3 btn-primary px-6 py-3.5 rounded-xl text-sm font-semibold shadow-lg shadow-[#C3A75D]/10 w-full justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          class="inline-flex items-center gap-2.5 w-full justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+          style="background: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,0.28);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
             <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.526 5.837L.057 23.854l6.187-1.621A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.214-3.724.977.994-3.636-.234-.374A9.778 9.778 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/>
           </svg>
@@ -264,6 +323,7 @@ Quisiera agendar una hora.`;
     messagesEl.innerHTML = '';
     optionsEl.innerHTML = '';
     restartBtn.classList.add('hidden');
+    if (stepBadge) stepBadge.classList.add('hidden');
     boot();
   });
 
