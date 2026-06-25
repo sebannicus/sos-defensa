@@ -1,0 +1,90 @@
+# SOS Defensa — Instrucciones del Proyecto
+
+## Contexto
+Landing jurídica para Carol Garriga y Nancy Cuellar, estudio de derecho laboral + familiar + mediación en La Serena y Coquimbo. Cliente de Sebastián / Gautama Digital. **En producción desde 2026-03-28.**
+
+## Stack
+- Astro + Tailwind v4, Playfair Display + Inter
+- Modo **static** (output: "static")
+- SilkBackground: canvas animado seda dorada como fondo global (fijo, z-index -1)
+- Sin framework CSS externo — design tokens custom
+
+## Paleta
+- `#0E0E10` negro base (semi-transparente en secciones: `rgba(14,14,16,0.80)`)
+- `#C3A75D` dorado accent
+- `#E8E1D6` beige cálido (secciones `.section-warm`)
+- Gradiente dorado: `#8A6F2F → #C3A75D → #E2C98A`
+
+## Deploy
+- Rama activa: `dev` — nunca trabajar directo en `main`
+- GitHub: github.com/sebannicus/sos-defensa
+- Vercel: https://sos-defensa.vercel.app ✅ — `vercel --prod` desde la carpeta del proyecto
+- Último commit deployado: `6aebaa7` (2026-06-24)
+
+## Estructura de componentes
+```
+src/
+  components/
+    layout/   Header.astro · Layout.astro · Footer.astro
+    sections/ Hero.astro · InfoStrip.astro · Pilares.astro · ConsultaSection.astro
+              ServiciosResumen.astro · Testimonios.astro · LeadSection.astro
+              VisitaSection.astro · FAQ.astro · CTAFinal.astro
+              LeadBot.astro · SilkBackground.astro
+  pages/
+    index.astro · servicios.astro · conocenos.astro · contacto.astro
+    conoce-tus-derechos/index.astro · conoce-tus-derechos/[slug].astro
+  styles/
+    global.css
+```
+
+## Fotos (public/)
+- `fotos-carol-garriga/` — carol_garriga_1..4.jpg (preferida portada: _1.jpg, servicios: _4.jpg)
+- `fotos-nancy-cuellar/` — nancy_cuellar_1..6.jpg (**_5.jpg = preferida para contacto y servicios**)
+- `fotos-oficina/` — oficina_1.jpeg, oficina_2.jpeg (usadas en VisitaSection slideshow)
+- `logo.png` — logo SOS Defensa (también usado como favicon y avatar en LeadBot)
+
+## Secciones del index (en orden)
+Hero → InfoStrip → Pilares → ConsultaSection → ServiciosResumen → Testimonios → LeadSection → VisitaSection → FAQ → CTAFinal
+
+## Datos de contacto
+- WhatsApp Nancy (principal y LeadBot): `56998078460` (+56 9 9807 8460)
+- WhatsApp Carol: `56995630415` (+56 9 9563 0415)
+- Email Nancy: n.sosdefensa@gmail.com
+- Email Carol: c.sosdefensa@gmail.com
+- Instagram: @sosdefensa
+
+## LeadBot (src/components/sections/LeadBot.astro)
+- Flujo 6 pasos: área → situación (laboral/familiar) → tiempo → documentos → ciudad → nombre
+- `WA_NUMBER = '56998078460'` ✅ número real Nancy (producción)
+- Diseño premium: borde degradado dorado, logo avatar, step badge "Paso X de 6", burbujas gold para usuario, CTA WhatsApp verde
+- "Relación directa y regular" incluida como opción en el flujo familiar
+
+## Servicios implementados
+**Derecho Laboral:** Despido injustificado, Autodespido, Acoso laboral, Impago de remuneraciones
+**Derecho de Familia:** Divorcio, Pensión de alimentos, Cuidado personal, Relación directa y regular, Violencia intrafamiliar, Separación de bienes
+**Mediación Familiar:** sección propia con descripción y bullets
+
+## Reglas de negocio
+- Solo La Serena y Coquimbo (no Calama)
+- Sin botón "Llamar ahora" en ninguna parte del sitio
+- Honorarios: "consulta gratuita + honorarios claros según tu causa" (no "solo pagas si ganamos")
+- Botón flotante WhatsApp: esquina inferior DERECHA, w-11, palpita verde
+
+## SEO implementado
+- robots.txt ✅
+- sitemap ✅ (@astrojs/sitemap)
+- FAQPage JSON-LD en /index (rich snippets Google)
+- LegalService schema.org en Layout.astro
+- Canonical URLs automáticas — siteUrl = 'https://sosdefensa.cl'
+- og-image: /og-image.jpg
+
+## Variables de entorno
+- `PUBLIC_GA_ID` — Google Analytics 4 (pendiente)
+- `PUBLIC_GTM_ID` — Google Tag Manager (pendiente)
+
+## Pendientes
+- Dirección exacta de la oficina (actualizar VisitaSection.astro — dice "La Serena, Región de Coquimbo")
+- Dominio `sosdefensa.cl` — apuntar a Vercel
+- GA4 y GTM IDs (pendiente de cliente)
+- Merge rama dev → main cuando cliente apruebe
+- Imagen Unsplash en Testimonios.astro (reemplazar por foto real cuando esté disponible)
