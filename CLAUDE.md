@@ -19,7 +19,7 @@ Landing jurídica para Carol Garriga y Nancy Cuellar, estudio de derecho laboral
 - Rama activa: `dev` — nunca trabajar directo en `main`
 - GitHub: github.com/sebannicus/sos-defensa
 - Vercel: https://sos-defensa.vercel.app ✅ — `vercel --prod` desde la carpeta del proyecto
-- Último commit deployado: `6aebaa7` (2026-06-24)
+- Último commit deployado: `79c31ba` (2026-06-26) — migración webp + dirección oficina
 
 ## Estructura de componentes
 ```
@@ -38,10 +38,11 @@ src/
 ```
 
 ## Fotos (public/)
-- `fotos-carol-garriga/` — carol_garriga_1..4.jpg (preferida portada: _1.jpg, servicios: _4.jpg)
-- `fotos-nancy-cuellar/` — nancy_cuellar_1..6.jpg (**_5.jpg = preferida para contacto y servicios**)
-- `fotos-oficina/` — oficina_1.jpeg, oficina_2.jpeg (usadas en VisitaSection slideshow)
+- `fotos-carol-garriga/` — carol_garriga_1.webp, carol_garriga_4.webp (portada: _1, servicios/contacto/conocenos: _4)
+- `fotos-nancy-cuellar/` — nancy_cuellar_5.webp, nancy_cuellar_6.webp (**_5 = preferida para contacto/servicios, _6 = Hero**)
+- `fotos-oficina/` — oficina_1.webp, oficina_2.webp (slideshow en VisitaSection)
 - `logo.png` — logo SOS Defensa (también usado como favicon y avatar en LeadBot)
+- ⚠️ Todos los jpg/jpeg eliminados del repo (migración webp completada 2026-06-26)
 
 ## Secciones del index (en orden)
 Hero → InfoStrip → Pilares → ConsultaSection → ServiciosResumen → Testimonios → LeadSection → VisitaSection → FAQ → CTAFinal
@@ -82,9 +83,12 @@ Hero → InfoStrip → Pilares → ConsultaSection → ServiciosResumen → Test
 - `PUBLIC_GA_ID` — Google Analytics 4 (pendiente)
 - `PUBLIC_GTM_ID` — Google Tag Manager (pendiente)
 
+## Dirección de la oficina
+Avenida Balmaceda 391, oficina 220, Edificio Italia, La Serena — implementada en VisitaSection.astro
+
 ## Pendientes
-- Dirección exacta de la oficina (actualizar VisitaSection.astro — dice "La Serena, Región de Coquimbo")
-- Dominio `sosdefensa.cl` — apuntar a Vercel
+- Dominio `sosdefensa.cl` — apuntar a Vercel (cliente comprando dominio)
 - GA4 y GTM IDs (pendiente de cliente)
 - Merge rama dev → main cuando cliente apruebe
 - Imagen Unsplash en Testimonios.astro (reemplazar por foto real cuando esté disponible)
+- Confirmar qué servicios adicionales ofrece el estudio (cliente envió referencias de otra firma: Sucesiones, Partición, Curadurías, Interdicción, Contratos, Indemnización, Arriendos, Estudio de títulos, Cambio de nombre)
