@@ -24,6 +24,14 @@ const servicios = [
     items: ['Acuerdos cooperativos', 'Resolución de conflictos', 'Menor costo y tiempo', 'Foco en el bienestar'],
     href: '/servicios#mediacion',
   },
+  {
+    num: '04',
+    area: 'Derecho Civil',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>`,
+    descripcion: 'Sucesiones, contratos, arriendos, indemnizaciones y más. Protegemos tus bienes e intereses en el ámbito civil.',
+    items: ['Sucesiones y herencias', 'Contratos y litigios', 'Juicios de arrendamiento', 'Estudio de títulos'],
+    href: '/servicios#civil',
+  },
 ];
 ---
 
@@ -40,7 +48,7 @@ const servicios = [
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
       {servicios.map((servicio, i) => (
         <div class={`reveal-up stagger-${i + 1} relative bg-(--color-bg-surface) rounded-2xl border border-(--color-bg-hover) card-lift group overflow-hidden flex flex-col`}>
           <!-- Gold top line -->

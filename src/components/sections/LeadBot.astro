@@ -70,7 +70,7 @@ const WA_NUMBER = '56998078460';
   const state = { answers: {} };
 
   const STEP_LABELS = {
-    area: 'Paso 1 de 6', sit_laboral: 'Paso 2 de 6', sit_familiar: 'Paso 2 de 6',
+    area: 'Paso 1 de 6', sit_laboral: 'Paso 2 de 6', sit_familiar: 'Paso 2 de 6', sit_civil: 'Paso 2 de 6',
     tiempo: 'Paso 3 de 6', docs: 'Paso 4 de 6', ciudad: 'Paso 5 de 6', nombre: 'Paso 6 de 6',
   };
 
@@ -93,11 +93,12 @@ const WA_NUMBER = '56998078460';
       options: [{ label: '▶ Comenzar', value: null, next: 'area' }]
     },
     area: {
-      bot: '¿Tu consulta es sobre derecho laboral o familiar?',
+      bot: '¿Tu consulta es de qué área del derecho?',
       key: 'area',
       options: [
         { label: '⚖️ Derecho Laboral',   value: 'Laboral',  next: 'sit_laboral' },
-        { label: '👨‍👩‍👧 Derecho Familiar', value: 'Familiar', next: 'sit_familiar' }
+        { label: '👨‍👩‍👧 Derecho Familiar', value: 'Familiar', next: 'sit_familiar' },
+        { label: '🏛️ Derecho Civil',      value: 'Civil',    next: 'sit_civil' }
       ]
     },
     sit_laboral: {
@@ -109,6 +110,22 @@ const WA_NUMBER = '56998078460';
         { label: 'Cotizaciones no pagadas',  value: 'Cotizaciones no pagadas',  next: 'tiempo' },
         { label: 'Accidente del trabajo',    value: 'Accidente del trabajo',    next: 'tiempo' },
         { label: 'Otra situación',           value: 'Otra situación laboral',   next: 'tiempo' }
+      ]
+    },
+    sit_civil: {
+      bot: '¿Qué describe mejor tu situación?',
+      key: 'situacion',
+      options: [
+        { label: 'Sucesión / Herencia',        value: 'Sucesión y herencia',          next: 'tiempo' },
+        { label: 'Partición de bienes',        value: 'Partición de bienes',          next: 'tiempo' },
+        { label: 'Curatela / Tutela',          value: 'Curatela o tutela',            next: 'tiempo' },
+        { label: 'Interdicción',               value: 'Interdicción',                 next: 'tiempo' },
+        { label: 'Contratos',                  value: 'Contratos',                    next: 'tiempo' },
+        { label: 'Indemnización de perjuicios',value: 'Indemnización de perjuicios',  next: 'tiempo' },
+        { label: 'Arriendo',                   value: 'Juicio de arrendamiento',      next: 'tiempo' },
+        { label: 'Estudio de títulos',         value: 'Estudio de títulos',           next: 'tiempo' },
+        { label: 'Cambio de nombre',           value: 'Cambio de nombre',             next: 'tiempo' },
+        { label: 'Otra situación',             value: 'Otra situación civil',         next: 'tiempo' }
       ]
     },
     sit_familiar: {

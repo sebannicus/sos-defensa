@@ -23,6 +23,45 @@ const serviciosLaboral = [
   },
 ];
 
+const serviciosCivil = [
+  {
+    titulo: 'Sucesiones y herencias',
+    descripcion: '¿Perdiste a un ser querido y hay bienes que distribuir? Te guiamos en todo el proceso sucesorio: testamentos, posesión efectiva, trámites ante el SRCeI y distribución de la herencia.',
+  },
+  {
+    titulo: 'Partición de bienes',
+    descripcion: 'Cuando existe una comunidad hereditaria u otra indivisión, el juicio de partición permite dividir los bienes de forma justa. Gestionamos la designación del partidor, la formación de hijuelas y las adjudicaciones.',
+  },
+  {
+    titulo: 'Curadurías y tutelas',
+    descripcion: 'Cuando un familiar necesita un representante legal por no poder administrar sus bienes o velar por sí mismo, tramitamos el nombramiento de tutor o curador ante el juzgado competente.',
+  },
+  {
+    titulo: 'Interdicción',
+    descripcion: 'El procedimiento de interdicción protege a personas con demencia o disipación. También asesoramos en el modelo de apoyos de la Ley 21.331, una alternativa más moderna centrada en la autonomía de la persona.',
+  },
+  {
+    titulo: 'Contratos y litigios contractuales',
+    descripcion: 'Redactamos, revisamos y litigamos contratos. Si una contraparte incumplió sus obligaciones, te representamos para exigir el cumplimiento forzado, la resolución del contrato y los perjuicios que correspondan.',
+  },
+  {
+    titulo: 'Indemnización de perjuicios',
+    descripcion: 'Si sufriste un daño por responsabilidad contractual o extracontractual, puedes demandar daño emergente, lucro cesante y daño moral. Te ayudamos a cuantificar y reclamar lo que te corresponde.',
+  },
+  {
+    titulo: 'Juicios de arrendamiento',
+    descripcion: 'Aplicamos el procedimiento sumario de la Ley 18.101 para recuperar arriendos impagos, poner término al contrato de arrendamiento y obtener la restitución del inmueble de forma eficiente.',
+  },
+  {
+    titulo: 'Estudio de títulos',
+    descripcion: 'Antes de comprar, hipotecar o vender un inmueble, revisamos la cadena de dominio de los últimos 10 años para detectar problemas registrales y sanear el título.',
+  },
+  {
+    titulo: 'Cambio de nombre y estado civil',
+    descripcion: 'Tramitamos la rectificación de partida en sede administrativa y judicial conforme a la Ley 17.344, incluyendo también los casos de identidad de género amparados por la Ley 21.120.',
+  },
+];
+
 const serviciosFamilia = [
   {
     titulo: 'Divorcio',
@@ -101,6 +140,27 @@ const serviciosFamilia = [
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           {serviciosFamilia.map((s, i) => (
             <div class={`reveal-up stagger-${i + 1} bg-(--color-bg) rounded-2xl overflow-hidden border border-(--color-bg-hover) card-lift group`}>
+              <div class="h-0.75 bg-linear-to-r from-[#8A6F2F] via-[#C3A75D] to-[#E2C98A]"></div>
+              <div class="p-8">
+                <h3 class="font-['Playfair_Display'] text-xl font-bold text-(--color-accent) mb-3 group-hover:text-(--color-accent-light) transition-colors duration-200">{s.titulo}</h3>
+                <p class="text-(--color-text-secondary) text-sm leading-relaxed">{s.descripcion}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Derecho Civil -->
+    <section id="civil" class="bg-(--color-bg) py-20">
+      <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="flex items-center gap-3 mb-10 reveal-up">
+          <div class="w-1 h-8 bg-linear-to-b from-[#C3A75D] to-[#8A6F2F] rounded-full"></div>
+          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-(--color-text-primary)">Derecho Civil</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {serviciosCivil.map((s, i) => (
+            <div class={`reveal-up stagger-${(i % 3) + 1} bg-(--color-bg-surface) rounded-2xl overflow-hidden border border-(--color-bg-hover) card-lift group`}>
               <div class="h-0.75 bg-linear-to-r from-[#8A6F2F] via-[#C3A75D] to-[#E2C98A]"></div>
               <div class="p-8">
                 <h3 class="font-['Playfair_Display'] text-xl font-bold text-(--color-accent) mb-3 group-hover:text-(--color-accent-light) transition-colors duration-200">{s.titulo}</h3>
