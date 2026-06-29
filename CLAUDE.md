@@ -19,7 +19,7 @@ Landing jurídica para Carol Garriga y Nancy Cuellar, estudio de derecho laboral
 - Rama activa: `dev` — nunca trabajar directo en `main`
 - GitHub: github.com/sebannicus/sos-defensa
 - Vercel: https://sos-defensa.vercel.app ✅ — `vercel --prod` desde la carpeta del proyecto
-- Último commit deployado: `79c31ba` (2026-06-26) — migración webp + dirección oficina
+- Último commit deployado: `a238e98` (2026-06-29) — Derecho Civil agregado
 
 ## Estructura de componentes
 ```
@@ -55,15 +55,17 @@ Hero → InfoStrip → Pilares → ConsultaSection → ServiciosResumen → Test
 - Instagram: @sosdefensa
 
 ## LeadBot (src/components/sections/LeadBot.astro)
-- Flujo 6 pasos: área → situación (laboral/familiar) → tiempo → documentos → ciudad → nombre
+- Flujo 6 pasos: área → situación (laboral/familiar/civil) → tiempo → documentos → ciudad → nombre
 - `WA_NUMBER = '56998078460'` ✅ número real Nancy (producción)
 - Diseño premium: borde degradado dorado, logo avatar, step badge "Paso X de 6", burbujas gold para usuario, CTA WhatsApp verde
-- "Relación directa y regular" incluida como opción en el flujo familiar
+- Paso 1: 3 opciones — Derecho Laboral / Derecho Familiar / Derecho Civil
+- Civil despliega 10 subtipos: Sucesión, Partición, Curatela, Interdicción, Contratos, Indemnización, Arriendo, Estudio de títulos, Cambio de nombre, Otra
 
 ## Servicios implementados
 **Derecho Laboral:** Despido injustificado, Autodespido, Acoso laboral, Impago de remuneraciones
 **Derecho de Familia:** Divorcio, Pensión de alimentos, Cuidado personal, Relación directa y regular, Violencia intrafamiliar, Separación de bienes
 **Mediación Familiar:** sección propia con descripción y bullets
+**Derecho Civil (agregado 2026-06-29):** Sucesiones y herencias, Partición de bienes, Curadurías y tutelas, Interdicción, Contratos y litigios, Indemnización de perjuicios, Juicios de arrendamiento, Estudio de títulos, Cambio de nombre y estado civil
 
 ## Reglas de negocio
 - Solo La Serena y Coquimbo (no Calama)
@@ -86,9 +88,14 @@ Hero → InfoStrip → Pilares → ConsultaSection → ServiciosResumen → Test
 ## Dirección de la oficina
 Avenida Balmaceda 391, oficina 220, Edificio Italia, La Serena — implementada en VisitaSection.astro
 
+## Estado sesión 2026-06-29 — TODO DEPLOYADO EN PRODUCCIÓN ✅
+- Fotos migradas a webp (jpg/jpeg eliminados del repo)
+- Dirección oficina: Avenida Balmaceda 391, oficina 220, Edificio Italia, La Serena
+- Derecho Civil agregado: servicios.astro (sección #civil), ServiciosResumen (4ª tarjeta, grid 2→4 col), LeadBot (3ª rama + 10 subtipos)
+- Último commit: `a238e98` — rama dev pusheada a GitHub
+
 ## Pendientes
-- Dominio `sosdefensa.cl` — apuntar a Vercel (cliente comprando dominio)
+- Dominio `sosdefensa.cl` — cliente comprando dominio → conectar en Vercel (Settings → Domains)
 - GA4 y GTM IDs (pendiente de cliente)
 - Merge rama dev → main cuando cliente apruebe
 - Imagen Unsplash en Testimonios.astro (reemplazar por foto real cuando esté disponible)
-- Confirmar qué servicios adicionales ofrece el estudio (cliente envió referencias de otra firma: Sucesiones, Partición, Curadurías, Interdicción, Contratos, Indemnización, Arriendos, Estudio de títulos, Cambio de nombre)
