@@ -100,7 +100,8 @@ Avenida Balmaceda 391, oficina 220, Edificio Italia, La Serena — implementada 
 - GA4 `G-3CKHTH7LPX` activo en producción ✅
 - Google Search Console verificado + sitemap enviado (17 páginas) ✅
 - robots.txt deployado ✅
-- Commits del sprint: `5ab4f48` (civil + teléfono) → `b96cd53` (robots.txt) → `ca7ad60` (GSC + GA4)
+- Footer: Carol en WhatsApp (CTA principal) + Nancy en tel (informativo) — sin duplicados ✅
+- Commits del sprint: `5ab4f48` → `b96cd53` → `ca7ad60` → `aa1ac9f` → `caee7c8` → `d1714ab`
 
 ## Pendientes
 - **og-image real:** crear imagen 1200×630 con branding SOS Defensa y subir como `/public/og-image.png` (actualizar Layout.astro)
